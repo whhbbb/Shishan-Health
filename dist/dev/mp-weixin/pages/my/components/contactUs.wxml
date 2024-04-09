@@ -1,0 +1,1 @@
+<view class="contact"><view wx:for="{{a}}" wx:for-item="item" class="contact-item" key-="{{item.d}}"><view class="person"><view class="name">{{item.a}}</view><view class="phone">{{item.b}}</view></view><view class="email">{{item.c}}</view></view></view>

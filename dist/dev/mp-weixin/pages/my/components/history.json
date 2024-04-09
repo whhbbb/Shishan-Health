@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "积分记录",
+  "usingComponents": {
+    "uni-icons": "../../../node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons",
+    "uni-list-item": "../../../node-modules/@dcloudio/uni-ui/lib/uni-list-item/uni-list-item",
+    "uni-list": "../../../node-modules/@dcloudio/uni-ui/lib/uni-list/uni-list"
+  }
+}

@@ -1,0 +1,144 @@
+
+/**index.wxss**/
+page.data-v-b4c1d435 {
+  width: 100%;
+  height: 100%;
+}
+.container.data-v-b4c1d435 {
+  width: 100%;
+  height: 100vh;
+  padding-top: 80rpx;
+}
+.nav.data-v-b4c1d435 {
+  /* 设置tab-nav宽高度 */
+  height: 80rpx;
+  width: 100%;
+
+  /* 假如您需要并排放置两个带边框的框，
+  可通过将 box-sizing 设置为 "border-box"。 */
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  /* 居中 */
+  line-height: 80rpx;
+
+  background: #f7f7f7;
+
+  font-size: 16px;
+
+  /* 规定段落中的文本不进行换行： */
+  white-space: nowrap;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.nav-item.data-v-b4c1d435 {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+.nav-item.active.data-v-b4c1d435 {
+  color: #428ffb;
+}
+.tab-box.data-v-b4c1d435 {
+  background: rgb(31, 201, 96);
+  /* 这里设置成nav的高度 */
+  padding-top: 80rpx;
+  height: 100%;
+  box-sizing: border-box;
+}
+.tab-content.data-v-b4c1d435 {
+  /* 裁剪 div 元素中内容的左/右边缘 - 如果溢出元素的内容区域的话： */
+  overflow-y: scroll;
+}
+
+/*
+.container {
+  padding: 10rpx;
+} */
+.content.data-v-b4c1d435 {
+  text-align: justify;
+}
+.item.data-v-b4c1d435 {
+  background-color: #fff;
+  margin: 10rpx 3%;
+  margin-bottom: 20rpx;
+  display: inline-block;
+  width: 96%;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.item-ava.data-v-b4c1d435 {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+}
+.heart.data-v-b4c1d435 {
+  width: 30rpx;
+  height: 26rpx;
+  margin-right: 8rpx;
+}
+.heart.data-v-b4c1d435 {
+  display: flex;
+  align-items: center;
+}
+.item-img.data-v-b4c1d435 {
+  width: 100%;
+}
+.item-title.data-v-b4c1d435 {
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-family: 'PingFang SC-Medium';
+  color: #1e1e1e;
+  margin: 15rpx;
+  line-height: 27rpx;
+}
+.goodsname.data-v-b4c1d435 {
+  font-size: 30rpx;
+  line-height: 35rpx;
+}
+.item .name.data-v-b4c1d435 {
+  display: flex;
+  padding: 0 15rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+  font-size: 22rpx;
+  color: #1e1e1e;
+  font-family: 'PingFang SC-Medium';
+}
+.name image.data-v-b4c1d435 {
+  flex: 0 0 auto;
+}
+.item-title-box.data-v-b4c1d435 {
+  display: flex;
+  position: relative;
+}
+.name-title.data-v-b4c1d435 {
+  flex: 1;
+  margin-left: 18rpx;
+  margin-right: 20rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.name text.data-v-b4c1d435:last-child {
+  color: #c4c4c4;
+  text-decoration: underline;
+  line-height: 10rpx;
+}
+.left.data-v-b4c1d435,
+.right.data-v-b4c1d435 {
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}

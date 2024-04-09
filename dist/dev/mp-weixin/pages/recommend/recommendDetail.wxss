@@ -1,0 +1,211 @@
+
+/* pages/posts/post-detail/post-detail.wxss */
+.container.data-v-fa681abe {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.head-container.data-v-fa681abe {
+  width: 100%;
+  height: 460rpx;
+  position: relative;
+}
+.head-image.data-v-fa681abe {
+  width: 100%;
+  height: 460rpx;
+}
+.audio.data-v-fa681abe {
+  width: 102rpx;
+  height: 110rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -55rpx;
+  left: 50%;
+  margin-left: -51rpx;
+  opacity: 0.6;
+}
+.author-date.data-v-fa681abe {
+  display: flex;
+  flex-direction: row;
+  margin: 3vh auto 0;
+  width: 100%;
+}
+.author-view.data-v-fa681abe {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-left: 5%;
+}
+.avatar.data-v-fa681abe {
+  /* height:100%; */
+  width: 100rpx;
+  height: 100rpx;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-left: 20rpx;
+  border-radius: 15%;
+}
+.author.data-v-fa681abe {
+  font-size: 30rpx;
+  font-weight: 300;
+  vertical-align: middle;
+  color: #666;
+}
+.const-text.data-v-fa681abe {
+  font-size: 24rpx;
+  color: #999;
+}
+.date.data-v-fa681abe {
+  margin-top: 2rpx;
+  font-size: 24rpx;
+  vertical-align: middle;
+  color: #999;
+}
+.title.data-v-fa681abe {
+  font-size: 36rpx;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 5rpx;
+  color: #4b556c;
+}
+.tool.data-v-fa681abe {
+  width: 90%;
+  line-height: 65rpx;
+  margin: 3vh auto 0;
+  font-size: 34rpx;
+  word-break: break-all;
+  overflow: hidden;
+}
+.circle-img.data-v-fa681abe {
+  float: right;
+  margin-right: 40rpx;
+  vertical-align: middle;
+}
+
+/* .circle-img image{
+  width: 90rpx;
+  height: 90rpx;
+}
+.share-img{
+  margin-left: 30rpx;
+} */
+.activityD.data-v-fa681abe {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 3vh auto 0;
+  /* margin:10px 0; */
+}
+.horizon.data-v-fa681abe {
+  width: 660rpx;
+  height: 1px;
+  background-color: #e5e5e5;
+  vertical-align: middle;
+  position: relative;
+  top: 46rpx;
+  margin: 0 auto;
+  z-index: -99;
+}
+.detail.data-v-fa681abe {
+  color: #666;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+  line-height: 44rpx;
+  letter-spacing: 2px;
+}
+
+/* 评论 */
+.discuss-view.data-v-fa681abe {
+  background: rgb(241, 241, 241);
+  width: 100%;
+  margin-top: 10rpx;
+  border-top: 1px solid rgb(213, 213, 213);
+  min-height: 20rpx;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.discuss.data-v-fa681abe {
+  background: rgb(241, 241, 241);
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  word-break: break-all;
+  white-space: normal;
+  overflow: hidden;
+}
+.discuss label.data-v-fa681abe {
+  font-size: 30rpx;
+}
+.discuss-user.data-v-fa681abe {
+  color: rgb(88, 103, 138);
+}
+.content.data-v-fa681abe {
+  margin-left: 10rpx;
+}
+.wrapper.data-v-fa681abe {
+  border-radius: 10rpx;
+  width: 90%;
+  margin: 3vh auto;
+  background-color: rgb(241, 241, 241);
+}
+.TLC.data-v-fa681abe {
+  font-size: 29rpx;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 10rpx;
+  /* border-bottom: 1px solid rgb(213, 213, 213); */
+  height: 70rpx;
+  line-height: 70rpx;
+  display: flex;
+  flex-wrap: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: rgb(241, 241, 241); */
+  /* */
+}
+.TlC > view.data-v-fa681abe {
+  display: flex;
+  align-items: center;
+}
+.dianzannum.data-v-fa681abe {
+  display: flex;
+  flex-wrap: row;
+}
+.zan-name-view.data-v-fa681abe {
+  background-color: rgb(241, 241, 241);
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
+  overflow-wrap: break-word;
+}
+.zan-user.data-v-fa681abe {
+  font-size: 24rpx;
+  line-height: 40rpx;
+  height: 40rpx;
+  color: rgb(88, 103, 138);
+}
+.input-view.data-v-fa681abe {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  background-color: white;
+}
+.inputstyle.data-v-fa681abe {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  padding-left: 5px;
+}
+.btn-view.data-v-fa681abe {
+  height: 40px;
+  font-size: medium;
+  border: 1px solid #ccc;
+}

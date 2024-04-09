@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "精彩专栏",
+  "usingComponents": {
+    "news-item": "./components/newsItem"
+  }
+}

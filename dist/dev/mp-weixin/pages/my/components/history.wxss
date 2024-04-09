@@ -1,0 +1,12 @@
+
+.noHistory {
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
+  box-shadow: inset 2px 2px 4px rgb(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.noH {
+  color: #000;
+  margin: auto;
+}

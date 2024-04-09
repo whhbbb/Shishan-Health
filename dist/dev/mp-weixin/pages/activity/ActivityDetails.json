@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "活动详情",
+  "usingComponents": {
+    "uni-tag": "../../node-modules/@dcloudio/uni-ui/lib/uni-tag/uni-tag"
+  }
+}

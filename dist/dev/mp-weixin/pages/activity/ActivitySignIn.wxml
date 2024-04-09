@@ -1,0 +1,1 @@
+<view class="data-v-82454ebc"><image bindtap="{{a}}" class="scan-img data-v-82454ebc" src="/static/activity/scanimg.png"></image><button class="data-v-82454ebc" style="box-shadow:0 0 7px rgba(0, 0, 0, 0.1)" type="primary" bindtap="{{b}}" id="scan"> 扫一扫 </button></view>

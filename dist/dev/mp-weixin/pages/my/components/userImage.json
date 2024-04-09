@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "头像",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#000000",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "uni-popup": "../../../node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup"
+  }
+}

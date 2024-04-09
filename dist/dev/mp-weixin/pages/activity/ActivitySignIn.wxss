@@ -1,0 +1,13 @@
+
+.scan-img.data-v-82454ebc {
+  width: 70%;
+  height: 500rpx;
+
+  margin: 5vh 15%;
+  /* border: 1rpx solid #ccc; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+button.data-v-82454ebc {
+  width: 80%;
+  margin: 1vh 10%;
+}
