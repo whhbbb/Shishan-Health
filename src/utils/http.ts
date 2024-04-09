@@ -5,7 +5,7 @@ const httpInterceptor = {
   invoke(options: UniApp.RequestOptions) {
     // 非http开头拼接
     if (!options.url.startsWith('http')) {
-      options.url = 'https://47.115.213.253:3166' + options.url
+      options.url = 'https://124.220.216.249:3266' + options.url
     }
     options.timeout = 10000
     // 添加小程序请求头标识
