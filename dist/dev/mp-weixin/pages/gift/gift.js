@@ -44,12 +44,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           icon: "none",
           duration: 1e3
         });
+        return;
       }
     };
     const maxNum = common_vendor.computed(() => {
-      if (mycredit.value == 0) {
-        return 0;
-      }
       return goodsdata.value.allnums;
     });
     const scoreres = common_vendor.computed(() => {
@@ -92,6 +90,69 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         urls: goodsdata.value.imgs
       });
     };
+    const applyExchange = async (data) => {
+      const res = await services_gift.exchangeGift(data);
+      console.log(res);
+      if (res.code == 200) {
+        if (res.data == 3) {
+          common_vendor.index.showToast({
+            title: "兑换成功！",
+            icon: "success",
+            duration: 2e3,
+            complete: function() {
+              setTimeout(function() {
+                getGiftDetails(props.id);
+                getMyCredit();
+                goodsnum.value = 0;
+              }, 2e3);
+            }
+          });
+        }
+        if (res.data == 2) {
+          common_vendor.index.showToast({
+            title: "余额不足！",
+            icon: "error",
+            duration: 2e3,
+            success: () => {
+              goodsnum.value = 0;
+            }
+          });
+        }
+        if (res.data == 1) {
+          common_vendor.index.showToast({
+            title: "库存不足！",
+            icon: "error",
+            duration: 2e3
+          });
+        }
+      }
+    };
+    const immeBuy = () => {
+      console.log("购买");
+      if (mycredit.value < goodsnum.value * goodsdata.value.price) {
+        common_vendor.index.showToast({
+          title: "剩余积分不足",
+          icon: "error",
+          duration: 2e3
+        });
+        return;
+      }
+      common_vendor.wx$1.showModal({
+        title: "确认兑换",
+        content: "确定要兑换吗？",
+        success(res) {
+          if (res.confirm) {
+            applyExchange({
+              id: null,
+              goodsId: goodsdata.value.id,
+              nums: goodsnum.value
+            });
+          } else if (res.cancel) {
+            console.log("用户取消了兑换");
+          }
+        }
+      });
+    };
     return (_ctx, _cache) => {
       var _a, _b;
       return {
@@ -122,8 +183,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           modelValue: goodsnum.value
         }),
         m: common_vendor.t(common_vendor.unref(scoreres)),
-        n: ((_a = common_vendor.unref(safeAreaInsets)) == null ? void 0 : _a.bottom) + 0 + "px",
-        o: ((_b = common_vendor.unref(safeAreaInsets)) == null ? void 0 : _b.bottom) + 0 + "px"
+        n: common_vendor.o(immeBuy),
+        o: ((_a = common_vendor.unref(safeAreaInsets)) == null ? void 0 : _a.bottom) + 0 + "px",
+        p: ((_b = common_vendor.unref(safeAreaInsets)) == null ? void 0 : _b.bottom) + 0 + "px"
       };
     };
   }

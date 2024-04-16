@@ -5,7 +5,7 @@ const httpInterceptor = {
   // 拦截前触发
   invoke(options) {
     if (!options.url.startsWith("http")) {
-      options.url = "https://124.220.216.249:3266" + options.url;
+      options.url = "https://www.academictime.cn:3266" + options.url;
     }
     options.timeout = 1e4;
     options.header = {

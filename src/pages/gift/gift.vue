@@ -51,7 +51,7 @@
           v-model="goodsnum"
         ></uni-number-box>
       </view>
-      <view class="score-box">
+      <view class="score-box" @tap="immeBuy">
         <image
           class="score-img"
           src="../../static/gifts/blue-score.png"
@@ -112,18 +112,17 @@ const getMyCredit = async () => {
 const mycredit = ref<number>(1)
 const blur = (e) => {
   console.log(e)
+  // 判断所需金额是否超出所拥有的金额
   if (e.detail.value > goodsdata.value.allnums) {
     uni.showToast({
       title: '兑换数量超出库存',
       icon: 'none',
       duration: 1000,
     })
+    return
   }
 }
 const maxNum = computed(() => {
-  if (mycredit.value == 0) {
-    return 0
-  }
   return goodsdata.value.allnums
 })
 const scoreres = computed(() => {
@@ -198,6 +197,9 @@ const applyExchange = async (data) => {
         title: '余额不足！',
         icon: 'error',
         duration: 2000,
+        success: () => {
+          goodsnum.value = 0
+        },
       })
     }
     if (res.data == 1) {
@@ -215,7 +217,7 @@ const immeBuy = () => {
     uni.showToast({
       title: '剩余积分不足',
       icon: 'error',
-      duration: 1000,
+      duration: 2000,
     })
     return
   }

@@ -123,12 +123,14 @@ export default {
 .container {
   width: 100%;
   height: 100vh;
-  padding-top: 7vh;
+  padding-top: 4vh;
+  margin: 0 auto;
 }
 .nav {
   /* 设置tab-nav宽高度 */
   height: 7vh;
-  width: 100%;
+  width: 45%;
+  margin-left: 4vw;
 
   /* 假如您需要并排放置两个带边框的框，
   可通过将 box-sizing 设置为 "border-box"。 */
@@ -137,29 +139,25 @@ export default {
   overflow: hidden;
 
   /* 居中 */
-  line-height: 7vh;
+  line-height: 5vh;
 
-  background: #f7f7f7;
+  background: #fff;
 
-  font-size: 32rpx;
+  font-size: 37rpx;
 
   /* 规定段落中的文本不进行换行： */
   white-space: nowrap;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
 }
 
 .nav-item {
   width: 50%;
   display: inline-block;
   text-align: center;
+  color: #999;
 }
 
 .nav-item.active {
-  color: #428ffb;
+  color: #242424;
 }
 .content {
   overflow-y: scroll;

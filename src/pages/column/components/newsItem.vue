@@ -7,35 +7,39 @@
     :key="item.id"
   >
     <!--  -->
-    <image class="post-image" :src="item.img" mode="heightFix"></image>
-    <text class="post-title">{{ item.title }}</text>
-    <text class="post-content">{{ item.summary }}</text>
-    <view class="post-like">
-      <view class="time">
-        <text>{{ item.createTime }}</text>
+    <image class="post-image" :src="item.img" mode="scaleToFill"></image>
+    <view class="post-right">
+      <text class="post-title">{{ item.title }}</text>
+      <!-- <text class="post-content">{{ item.summary }}</text> -->
+      <view class="post-like">
+        <view class="time">
+          <text>{{ item.createTime }}</text>
+        </view>
       </view>
       <view class="hit">
-        <view>
-          <uni-icons
-            v-if="!item.tblLike"
-            @tap.stop="likeUp(item.id, item.tblLike)"
-            type="heart"
-            size="20"
-          ></uni-icons>
-          <uni-icons
-            v-else
-            type="heart-filled"
-            size="20"
-            @tap.stop="likeUp(item.id, item.tblLike)"
-            color="red"
-          ></uni-icons>
-          <text class="post-like-font">{{ item.likeCount }}</text>
-        </view>
-        <view>
-          <uni-icons type="eye-filled" size="20"></uni-icons>
+        <view class="hit-inner">
+          <image class="post-like-image" src="../../../static/column/eyes.png"></image>
           <text class="post-like-font">{{ item.viewsNums }}</text>
         </view>
+        <view class="hit-inner">
+          <image
+            v-if="!item.tblLike"
+            class="post-like-image"
+            @tap.stop="likeUp(item.id, item.tblLike)"
+            src="../../../static/column/heart.png"
+          ></image>
+          <image
+            v-else
+            class="post-like-image"
+            @tap.stop="likeUp(item.id, item.tblLike)"
+            src="../../../static/column/heart-active.png"
+          ></image>
+          <text class="post-like-font">{{ item.likeCount }}</text>
+        </view>
       </view>
+    </view>
+    <view class="icon">
+      <uni-icons type="right" size="20"></uni-icons>
     </view>
   </navigator>
 </template>
@@ -136,30 +140,44 @@ onShow(() => {
 <style lang="scss">
 .post-container {
   display: flex;
-  flex-direction: column;
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 20rpx;
   // margin-bottom: 40rpx;
   background-color: #fff;
-  border-bottom: 1px solid #b5b5b5;
-  padding-bottom: 5px;
-}
-
-.post-title {
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-  padding-left: 10rpx;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 20rpx;
+  .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+  }
 }
 
 .post-image {
-  max-width: 90vw;
-  height: 400rpx;
+  width: 40%;
+  height: 180rpx;
   margin: 0 auto;
-  margin-bottom: 15px;
-  border-radius: 5rpx;
+  border-radius: 10rpx;
+  margin: 10rpx 10rpx 10rpx 0;
+}
+.post-right{
+  margin: 15rpx 0 15rpx 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .post-title {
+    width: 45vw;
+    white-space: nowrap; /* 禁止换行 */
+    overflow: hidden; /* 超出部分隐藏 */
+    text-overflow: ellipsis; /* 显示省略号 */
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    padding-left: 10rpx;
+  }
 }
 
 .post-content {
@@ -174,34 +192,38 @@ onShow(() => {
 
 .post-like {
   display: flex;
-  justify-content: space-between;
   font-size: 13px;
   line-height: 16px;
-  // margin-left: 10px;
 }
 
 .hit {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
   width: 100px;
+  padding-left: 12rpx;
+  .hit-inner{
+    width: 90rpx;
+    display: flex;
+    align-items: center;
+    margin-right: 30rpx;
+  }
 }
 
 .time {
   color: #7a7a7a;
   font-size: 25rpx;
-  padding-left: 15rpx;
+  padding-left: 10rpx;
 }
 
 .post-like-image {
+  font-size: 15rpx;
   width: 30rpx;
   height: 30rpx;
-  margin-right: 8px;
-  vertical-align: middle;
+  margin-right: 10rpx;
 }
 
 .post-like-font {
-  vertical-align: middle;
-  font-size: 30rpx;
-  margin: 0 20px 3rpx 0;
+  font-size: 28rpx;
 }
 </style>

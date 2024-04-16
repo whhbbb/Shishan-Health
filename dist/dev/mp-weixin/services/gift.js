@@ -12,6 +12,13 @@ const getGiftDetail = (id) => {
     url: `/system/goods/${id}`
   });
 };
+const exchangeGift = (data) => {
+  return utils_http.http({
+    method: "POST",
+    url: `/system/usergoods`,
+    data
+  });
+};
 const getGiftHistory = () => {
   return utils_http.http({
     method: "GET",
@@ -24,6 +31,7 @@ const getCreidHistory = () => {
     url: "/system/credituser/list"
   });
 };
+exports.exchangeGift = exchangeGift;
 exports.getCreidHistory = getCreidHistory;
 exports.getGiftDetail = getGiftDetail;
 exports.getGiftHistory = getGiftHistory;

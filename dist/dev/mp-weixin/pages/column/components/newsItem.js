@@ -84,34 +84,22 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           return common_vendor.e({
             a: item.img,
             b: common_vendor.t(item.title),
-            c: common_vendor.t(item.summary),
-            d: common_vendor.t(item.createTime),
+            c: common_vendor.t(item.createTime),
+            d: common_vendor.t(item.viewsNums),
             e: !item.tblLike
           }, !item.tblLike ? {
-            f: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id),
-            g: "a828ff36-0-" + i0,
-            h: common_vendor.p({
-              type: "heart",
-              size: "20"
-            })
+            f: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id)
           } : {
-            i: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id),
-            j: "a828ff36-1-" + i0,
-            k: common_vendor.p({
-              type: "heart-filled",
-              size: "20",
-              color: "red"
-            })
+            g: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id)
           }, {
-            l: common_vendor.t(item.likeCount),
-            m: "a828ff36-2-" + i0,
-            n: common_vendor.t(item.viewsNums),
-            o: `/pages/column/components/article?kind=${item.kind}&id=${item.id}`,
-            p: item.id
+            h: common_vendor.t(item.likeCount),
+            i: "8de1a188-0-" + i0,
+            j: `/pages/column/components/article?kind=${item.kind}&id=${item.id}`,
+            k: item.id
           });
         }),
         b: common_vendor.p({
-          type: "eye-filled",
+          type: "right",
           size: "20"
         })
       };
