@@ -23,12 +23,19 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.container {
+  display: flex;
+  flex-direction: column;
+}
 .detail {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 90%;
   margin: 0 auto;
+  flex: 1;
+  padding-bottom: 174rpx;
+  overflow: hidden;
 }
 .detail .top {
   display: flex;
@@ -129,27 +136,42 @@
   font-size: 30rpx;
   color: #000000;
 }
-.detail .footer .activity-btn {
-  margin-bottom: 45rpx;
+.footer {
+  color: #0077B6;
+  font-size: 26rpx;
+  padding: 15rpx;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  box-shadow: 0px -0.5px 0.5rpx #A6AAB2;
+  background-color: #F5F6F7;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.footer .activity-btn {
   display: flex;
   justify-content: center;
-}
-.detail .footer .activity-btn .btn {
   width: 40%;
-  margin-top: 50rpx;
-  font-size: 38rpx;
 }
-.detail .footer .activity-btn .hhh {
+.footer .activity-btn .btn {
+  width: 100%;
+  color: #0077B6;
+  border-radius: 40rpx;
+  background-color: hsla(194, 84%, 51%, 0.15);
+  font-size: 30rpx;
+}
+.footer .activity-btn .hhh {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-content: center;
 }
-.detail .footer .activity-btn .hhh .hhh-btn {
+.footer .activity-btn .hhh .hhh-btn {
   width: 40%;
-  margin-bottom: 10rpx;
 }
-.detail .footer .activity-btn .hhh .span {
+.footer .activity-btn .hhh .span {
   text-align: center;
   color: #6b6a6a;
   font-size: 15px;

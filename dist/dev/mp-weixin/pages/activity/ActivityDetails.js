@@ -141,14 +141,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         k: common_vendor.t(data0.value.cityname == "" ? "无" : data0.value.cityname),
         l: common_vendor.t(data0.value.img),
         m: common_vendor.t(data0.value.details),
-        n: data0.value.isClose === 0
+        n: common_vendor.t(data0.value.hbNum),
+        o: common_vendor.t(data0.value.hot),
+        p: data0.value.isClose === 0
       }, data0.value.isClose === 0 ? {
-        o: common_vendor.t(data0.value.startTime)
+        q: common_vendor.t(data0.value.startTime)
       } : data0.value.isApplication.length === 0 && data0.value.isClose === 1 ? {
-        q: common_vendor.o(applyon)
+        s: common_vendor.o(applyon)
       } : data0.value.isApplication.length > 0 && data0.value.isClose === 1 ? {} : {}, {
-        p: data0.value.isApplication.length === 0 && data0.value.isClose === 1,
-        r: data0.value.isApplication.length > 0 && data0.value.isClose === 1
+        r: data0.value.isApplication.length === 0 && data0.value.isClose === 1,
+        t: data0.value.isApplication.length > 0 && data0.value.isClose === 1
       });
     };
   }

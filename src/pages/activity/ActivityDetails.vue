@@ -1,4 +1,5 @@
 <template>
+  <view class="container">
   <view class="detail">
     <view class="top">
       <view class="detail-title">
@@ -47,7 +48,14 @@
         </view>
       </view>
     </view>
+  </view>
     <view class="footer">
+      <view class="footer-info">
+        <view>
+          {{ data0.hbNum }}/{{data0.hot}}
+        </view>
+        <view>还有天截止</view>
+      </view>
       <view class="activity-btn">
         <div class="btn hhh" v-if="data0.isClose === 0">
           <button type="default" class="hhh-btn">报名未开始</button>
@@ -207,6 +215,10 @@ const applyon = () => {
 </script>
 
 <style lang="scss">
+.container{
+  display: flex;
+  flex-direction: column;
+}
 .detail {
   // overflow-y: scroll;
   display: flex;
@@ -214,7 +226,9 @@ const applyon = () => {
   justify-content: space-between;
   width: 90%;
   margin: 0 auto;
-
+  flex:1;
+  padding-bottom: 174rpx;
+  overflow: hidden;
   .top {
     display: flex;
     flex-direction: column;
@@ -336,16 +350,33 @@ const applyon = () => {
     }
   }
 
-  .footer {
+
+}
+.footer {
+  color:#0077B6;
+    font-size: 26rpx;
+    padding:15rpx;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    height: 100rpx;
+    box-shadow:0px -0.5px 0.5rpx #A6AAB2;
+    background-color:#F5F6F7 ;
+    width: 100%;
+  display: flex;
+  flex-direction: row;
+
     .activity-btn {
-      margin-bottom: 45rpx;
       display: flex;
       justify-content: center;
-
+      width:40%;
       .btn {
-        width: 40%;
-        margin-top: 50rpx;
-        font-size: 38rpx;
+        width:100%;
+        color:#0077B6;
+        border-radius: 40rpx;
+        background-color: hsl(194, 84%, 51%,15%) ;
+
+        font-size:30rpx;
       }
       .hhh {
         width: 100%;
@@ -354,7 +385,7 @@ const applyon = () => {
         align-content: center;
         .hhh-btn {
           width: 40%;
-          margin-bottom: 10rpx;
+
         }
         .span {
           text-align: center;
@@ -365,8 +396,6 @@ const applyon = () => {
       }
     }
   }
-}
-
 .code-view {
   margin: 20rpx auto;
   padding-bottom: 30rpx;
