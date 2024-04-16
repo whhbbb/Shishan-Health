@@ -91,13 +91,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             a: common_vendor.t(item.title),
             b: item.sort == 1
           }, item.sort == 1 ? {
-            c: "0931a821-0-" + i0,
+            c: "4dbeae18-0-" + i0,
             d: common_vendor.p({
               type: "primary",
               text: "学术晚茶"
             })
           } : {
-            e: "0931a821-1-" + i0,
+            e: "4dbeae18-1-" + i0,
             f: common_vendor.p({
               type: "success",
               text: "学术社区"
@@ -125,6 +125,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/my/components/myactivity/components/Details.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/my/components/myactivity/components/Details.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=Details.js.map

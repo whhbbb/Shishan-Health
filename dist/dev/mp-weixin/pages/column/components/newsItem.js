@@ -89,14 +89,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             e: !item.tblLike
           }, !item.tblLike ? {
             f: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id),
-            g: "8de1a188-0-" + i0,
+            g: "a828ff36-0-" + i0,
             h: common_vendor.p({
               type: "heart",
               size: "20"
             })
           } : {
             i: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id),
-            j: "8de1a188-1-" + i0,
+            j: "a828ff36-1-" + i0,
             k: common_vendor.p({
               type: "heart-filled",
               size: "20",
@@ -104,7 +104,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             })
           }, {
             l: common_vendor.t(item.likeCount),
-            m: "8de1a188-2-" + i0,
+            m: "a828ff36-2-" + i0,
             n: common_vendor.t(item.viewsNums),
             o: `/pages/column/components/article?kind=${item.kind}&id=${item.id}`,
             p: item.id
@@ -118,6 +118,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/column/components/newsItem.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/column/components/newsItem.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=newsItem.js.map

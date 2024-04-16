@@ -1501,7 +1501,7 @@ function populateParameters(fromRes, toRes) {
   let _SDKVersion = SDKVersion;
   const hostLanguage = language.replace(/_/g, "-");
   const parameters = {
-    appId: "wx04faa083708676ae",
+    appId: "wx78c9c71118355827",
     appName: "学术晚茶",
     appVersion: "1.0.0",
     appVersionCode: 1,
@@ -1645,7 +1645,7 @@ const getAppBaseInfo = {
       hostName: _hostName,
       hostSDKVersion: SDKVersion,
       hostTheme: theme,
-      appId: "wx04faa083708676ae",
+      appId: "wx78c9c71118355827",
       appName: "学术晚茶",
       appVersion: "1.0.0",
       appVersionCode: 1,
@@ -10100,7 +10100,7 @@ function S(e2) {
 const b = true, k = "mp-weixin", T = S([]), P = k, A = S(""), E = S("[]") || [];
 let x = "";
 try {
-  x = "wx04faa083708676ae";
+  x = "wx78c9c71118355827";
 } catch (e2) {
 }
 let R = {};

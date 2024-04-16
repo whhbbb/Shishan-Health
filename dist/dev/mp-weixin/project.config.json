@@ -18,27 +18,10 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.2.5",
+  "libVersion": "3.4.0",
   "appid": "wx78c9c71118355827",
   "projectname": "学术晚茶",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": -1,
-      "list": []
-    }
-  },
+  "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

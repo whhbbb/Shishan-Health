@@ -128,6 +128,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-018686c0"], ["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/gift/gift.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-018686c0"], ["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/gift/gift.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=gift.js.map

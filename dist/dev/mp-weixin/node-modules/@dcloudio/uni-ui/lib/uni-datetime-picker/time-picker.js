@@ -690,6 +690,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     K: common_vendor.s($data.fixNvueBug)
   }) : {});
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/node_modules/@dcloudio/uni-ui/lib/uni-datetime-picker/time-picker.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/feidian/计算机设计大赛/xswc_cs/node_modules/@dcloudio/uni-ui/lib/uni-datetime-picker/time-picker.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=time-picker.js.map

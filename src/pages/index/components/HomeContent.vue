@@ -43,37 +43,51 @@
           :key="item.id"
           :url="`/pages/activity/ActivityDetails?id=${item.id}`"
         >
-          <view class="activity-details-item-title">
+        <view class="img-view">
+          <image
+            :src="item.img"
+            mode="scaleToFill"
+          />
+        </view>
+
+        <view class="info-view">
+
             <view class="title">
               <span class="title-content">
                 {{ item.title }}
               </span>
-              <view class="activity-class">
-                <uni-tag v-if="item.sort == 1" type="primary" text="学术晚茶" />
-                <uni-tag v-else type="success" text="学术社区" />
-              </view>
             </view>
-          </view>
-          <view class="activity-details-item-contents">
-            <view class="activity-details-item-content">
-              <view class="sponsor"> 发起学院：{{ item.sponsorCollege }} </view>
+
+            <view class="detail-info">
+
+              <!-- <view class="sponsor"> 发起学院：{{ item.sponsorCollege }} </view> -->
+
               <view class="activity-details-item-content-time">
-                <image class="img" src="../../../static/activity/clock.png" />{{ item.time }}
+                <view><image class="img" src="../../../static/bottomBar/sign-in.png" /></view>
+                <view>{{ item.time }}</view>
               </view>
+
               <view class="activity-details-item-content-address">
-                <image class="img" src="../../../static/activity/address.png" />{{ item.address }}
+                <image class="img" src="../../../static/activity/loco.png" />{{ item.address }}
               </view>
-            </view>
-            <view class="activity-details-item-status">
-              <view class="population">
+
+
+              <!-- <view class="population">
                 <image class="img" src="../../../static/activity/User.png"></image
                 >{{ item.population }} / {{ item.limitPopulation }}
               </view>
+
               <view class="status">
                 {{ item.status }}
               </view>
+
+              <view class="activity-class">
+                <uni-tag v-if="item.sort == 1" type="primary" text="学术晚茶" />
+                <uni-tag v-else type="success" text="学术社区" />
+              </view> -->
             </view>
           </view>
+
         </navigator>
       </view>
       <view class="loading-text">
@@ -185,6 +199,7 @@ const getHomeContent = async (type: number, state: number, isEnd: number,pageNum
     let innerActivities = res.rows.map((item: any) => ({
       id: item.id,
       title: item.userImg2,
+      img:item.lng,
       status: item.isEnd == 1 ? '进行中' : '已结束',
       time: item.lat,
       address: item.address,
@@ -312,72 +327,68 @@ onHide(() => {})
       z-index: 99;
     }
   }
-  
+
 
   .activity-details {
     width: 82%;
     margin: 20rpx auto;
 
     .activity-details-item {
+      background-color: #fff;
+      box-shadow: 0 0 20px #d9d9d9;
+      height:372rpx;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: center;
       align-items: flex-start;
       width: 100%;
       padding: 30rpx;
-      background-color: #D9D9D9;
-      border-radius: 10rpx;
-      margin-bottom: 20rpx;
+      border-radius: 20rpx;
+      margin-bottom: 30rpx;
 
-      .activity-details-item-title {
-        font-size: 30rpx;
-        font-weight: bolder;
-        color: #333;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        margin-bottom: 20rpx;
-        width: 100%;
-        .title {
-          width: 100%;
-          // display: flex;
-          .title-content {
-            // flex: 1;
-            float: left;
-            line-height: 50rpx;
-          }
-          .activity-class {
-            // display: inline;
-            // width: fit-content;
-            // margin-left: 10rpx;
-            float: right;
-            line-height: 50rpx;
-          }
-        }
+      .img-view{
+        width:40%;
+        height:100%;
+        margin-right:32rpx;
+        border-radius: 10rpx;
       }
+      .info-view{
 
-      .activity-details-item-contents {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+        flex:1;
+        height: 100%;
 
-        .activity-details-item-content {
+        .title{
+          font-size: 30rpx;
+          color: #000000;
+          margin-bottom: 30rpx;
+          overflow:hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        }
+        .detail-info{
           display: flex;
-          justify-content: center;
-          flex-direction: column;
-          flex: 1;
+          flex-direction:column ;
 
           .sponsor {
             margin-bottom: 10rpx;
             font-size: 30rpx;
-            color: black;
             margin-bottom: 20rpx;
           }
 
           .activity-details-item-content-time {
-            margin-bottom: 10rpx;
-            font-size: 26rpx;
-            color: #767575;
-
+            position:relative;
+            font-size: 27rpx;
+            width:200rpx;
+            color: #666666;
+            overflow: hidden;
+            margin-bottom: 20rpx;
+            display: flex;
+            flex-direction: row;
             .img {
+              position: relative;
+              top:0;
               width: 30rpx;
               height: 30rpx;
               margin-right: 10rpx;
@@ -385,8 +396,8 @@ onHide(() => {})
           }
 
           .activity-details-item-content-address {
-            font-size: 26rpx;
-            color: #767575;
+            font-size: 27rpx;
+            color: #666666;
 
             .img {
               width: 30rpx;
@@ -394,6 +405,8 @@ onHide(() => {})
               margin-right: 10rpx;
             }
           }
+        }
+
         }
 
         .activity-details-item-status {
@@ -422,7 +435,18 @@ onHide(() => {})
           }
         }
       }
+      }
+
+
+
+        .activity-details-item-content {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          flex: 1;
+
+
     }
   }
-}
+
 </style>

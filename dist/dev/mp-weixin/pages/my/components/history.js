@@ -65,28 +65,28 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           return common_vendor.e({
             a: item.creditType == 2
           }, item.creditType == 2 ? {
-            b: "7bf43038-2-" + i0 + "," + ("7bf43038-1-" + i0),
+            b: "be9bed22-2-" + i0 + "," + ("be9bed22-1-" + i0),
             c: common_vendor.p({
               type: "flag-filled",
               color: "#92aff0",
               size: "25"
             })
           } : item.creditType == 3 ? {
-            e: "7bf43038-3-" + i0 + "," + ("7bf43038-1-" + i0),
+            e: "be9bed22-3-" + i0 + "," + ("be9bed22-1-" + i0),
             f: common_vendor.p({
               type: "chatboxes-filled",
               color: "#f1e9e4",
               size: "25"
             })
           } : item.creditType == 4 ? {
-            h: "7bf43038-4-" + i0 + "," + ("7bf43038-1-" + i0),
+            h: "be9bed22-4-" + i0 + "," + ("be9bed22-1-" + i0),
             i: common_vendor.p({
               type: "hand-up-filled",
               color: "#c5daf0",
               size: "25"
             })
           } : {
-            j: "7bf43038-5-" + i0 + "," + ("7bf43038-1-" + i0),
+            j: "be9bed22-5-" + i0 + "," + ("be9bed22-1-" + i0),
             k: common_vendor.p({
               type: "gift-filled",
               color: "#f5c7c3",
@@ -95,20 +95,20 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           }, {
             d: item.creditType == 3,
             g: item.creditType == 4,
-            l: "7bf43038-1-" + i0 + "," + ("7bf43038-0-" + i0),
+            l: "be9bed22-1-" + i0 + "," + ("be9bed22-0-" + i0),
             m: common_vendor.p({
               title: item.creditNum > 0 ? "+" + item.creditNum : item.creditNum,
               note: item.createTime,
               rightText: CType(item.creditType)
             }),
             n: index,
-            o: "7bf43038-0-" + i0
+            o: "be9bed22-0-" + i0
           });
         })
       });
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/my/components/history.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/my/components/history.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=history.js.map

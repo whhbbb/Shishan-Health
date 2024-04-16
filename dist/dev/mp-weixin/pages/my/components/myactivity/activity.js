@@ -81,7 +81,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: $setup.navScrollLeft,
     d: common_vendor.f($setup.navData, (tabItem, id, i0) => {
       return {
-        a: "e4c487f2-0-" + i0,
+        a: "64f70a84-0-" + i0,
         b: common_vendor.p({
           state: id
         }),
@@ -92,6 +92,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o((...args) => $setup.switchTab && $setup.switchTab(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/my/components/myactivity/activity.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/my/components/myactivity/activity.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=activity.js.map

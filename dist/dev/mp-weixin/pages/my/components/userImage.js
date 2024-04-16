@@ -125,13 +125,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         c: common_vendor.o(chooseImage),
         d: common_vendor.o(saveImage),
         e: common_vendor.o(cancel),
-        f: common_vendor.sr(popup, "0d3ceef4-0", {
+        f: common_vendor.sr(popup, "0c2d532a-0", {
           "k": "popup"
         })
       };
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/my/components/userImage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/my/components/userImage.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=userImage.js.map

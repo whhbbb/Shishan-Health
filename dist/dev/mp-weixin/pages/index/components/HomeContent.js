@@ -6,15 +6,13 @@ require("../../../stores/index.js");
 require("../../../stores/modules/member.js");
 if (!Array) {
   const _easycom_uni_data_select2 = common_vendor.resolveComponent("uni-data-select");
-  const _easycom_uni_tag2 = common_vendor.resolveComponent("uni-tag");
   const _easycom_uni_load_more2 = common_vendor.resolveComponent("uni-load-more");
-  (_easycom_uni_data_select2 + _easycom_uni_tag2 + _easycom_uni_load_more2)();
+  (_easycom_uni_data_select2 + _easycom_uni_load_more2)();
 }
 const _easycom_uni_data_select = () => "../../../node-modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.js";
-const _easycom_uni_tag = () => "../../../node-modules/@dcloudio/uni-ui/lib/uni-tag/uni-tag.js";
 const _easycom_uni_load_more = () => "../../../node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.js";
 if (!Math) {
-  (_easycom_uni_data_select + _easycom_uni_tag + _easycom_uni_load_more)();
+  (_easycom_uni_data_select + _easycom_uni_load_more)();
 }
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "HomeContent",
@@ -85,6 +83,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         let innerActivities = res.rows.map((item) => ({
           id: item.id,
           title: item.userImg2,
+          img: item.lng,
           status: item.isEnd == 1 ? "进行中" : "已结束",
           time: item.lat,
           address: item.address,
@@ -148,31 +147,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           modelValue: status.value
         }),
         f: common_vendor.f(activities.value, (item, k0, i0) => {
-          return common_vendor.e({
-            a: common_vendor.t(item.title),
-            b: item.sort == 1
-          }, item.sort == 1 ? {
-            c: "1a52a774-1-" + i0,
-            d: common_vendor.p({
-              type: "primary",
-              text: "学术晚茶"
-            })
-          } : {
-            e: "1a52a774-2-" + i0,
-            f: common_vendor.p({
-              type: "success",
-              text: "学术社区"
-            })
-          }, {
-            g: common_vendor.t(item.sponsorCollege),
-            h: common_vendor.t(item.time),
-            i: common_vendor.t(item.address),
-            j: common_vendor.t(item.population),
-            k: common_vendor.t(item.limitPopulation),
-            l: common_vendor.t(item.status),
-            m: item.id,
-            n: `/pages/activity/ActivityDetails?id=${item.id}`
-          });
+          return {
+            a: item.img,
+            b: common_vendor.t(item.title),
+            c: common_vendor.t(item.time),
+            d: common_vendor.t(item.address),
+            e: item.id,
+            f: `/pages/activity/ActivityDetails?id=${item.id}`
+          };
         }),
         g: common_vendor.p({
           status: finish.value
@@ -181,6 +163,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/index/components/HomeContent.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/index/components/HomeContent.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=HomeContent.js.map
