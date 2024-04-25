@@ -24,93 +24,97 @@
 /* 透明度 */
 /* 文章场景相关 */
 .my-activity {
-  width: 90%;
-  margin: 0 auto;
+  width: 82%;
+  margin: 20rpx auto;
 }
 .my-activity .activity-details-item {
+  background-color: #fff;
+  box-shadow: 0 0 20px #e5e4e4;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 30rpx 0;
-  border-bottom: 1px solid #d6d6d6;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
 }
-.my-activity .activity-details-item .activity-details-item-title {
-  font-size: 30rpx;
-  font-weight: bolder;
-  color: #333;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin-bottom: 20rpx;
-  width: 100%;
+.my-activity .activity-details-item .img-view {
+  margin: auto 0;
+  width: 40%;
+  height: 320rpx;
+  margin-right: 32rpx;
 }
-.my-activity .activity-details-item .activity-details-item-title .title {
-  width: 100%;
+.my-activity .activity-details-item .img-view image {
+  border-radius: 8rpx;
 }
-.my-activity .activity-details-item .activity-details-item-title .title .title-content {
-  float: left;
-  line-height: 50rpx;
-}
-.my-activity .activity-details-item .activity-details-item-title .title .activity-class {
-  float: right;
-  line-height: 50rpx;
-}
-.my-activity .activity-details-item .activity-details-item-contents {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.my-activity .activity-details-item .info-view {
   flex: 1;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-content .sponsor {
-  margin-bottom: 10rpx;
-  font-size: 30rpx;
-  color: black;
-  margin-bottom: 20rpx;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-content .activity-details-item-content-time {
-  margin-bottom: 10rpx;
-  font-size: 26rpx;
-  color: #767575;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-content .activity-details-item-content-time .img {
-  width: 30rpx;
-  height: 30rpx;
-  margin-right: 10rpx;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-content .activity-details-item-content-address {
-  font-size: 26rpx;
-  color: #767575;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-content .activity-details-item-content-address .img {
-  width: 30rpx;
-  height: 30rpx;
-  margin-right: 10rpx;
-}
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-status {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  width: 200rpx;
+  height: 100%;
 }
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-status .population {
+.my-activity .activity-details-item .info-view .title {
+  font-size: 30rpx;
+  color: #000000;
+  margin-bottom: 30rpx;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.my-activity .activity-details-item .info-view .detail-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.my-activity .activity-details-item .info-view .detail-info .sponsor {
   margin-bottom: 10rpx;
-  font-size: 26rpx;
-  color: #666;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
 }
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-status .population .img {
-  width: 32rpx;
-  height: 32rpx;
+.my-activity .activity-details-item .info-view .detail-info .activity-details-item-content-time {
+  position: relative;
+  font-size: 25rpx;
+  width: 200rpx;
+  color: #666666;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.my-activity .activity-details-item .info-view .detail-info .activity-details-item-content-time .img {
+  position: relative;
+  top: 0;
+  width: 30rpx;
+  height: 30rpx;
   margin-right: 10rpx;
 }
-.my-activity .activity-details-item .activity-details-item-contents .activity-details-item-status .status {
-  font-size: 26rpx;
-  color: #666;
+.my-activity .activity-details-item .info-view .detail-info .activity-details-item-content-address {
+  font-size: 25rpx;
+  color: #666666;
+}
+.my-activity .activity-details-item .info-view .detail-info .activity-details-item-content-address .img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.my-activity .activity-details-item .info-view .detail-info .status {
+  margin-top: 10rpx;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: #666666;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.my-activity .activity-details-item .info-view .detail-info .warn {
+  color: #f4cb34;
+}
+.my-activity .activity-details-item .info-view .detail-info .success {
+  color: #0077b6;
 }
 .no-activity {
   padding: 40px;

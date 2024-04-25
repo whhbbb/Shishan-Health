@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
 const services_HomeContent = require("../../../services/HomeContent.js");
+const services_my = require("../../../services/my.js");
 require("../../../utils/http.js");
 require("../../../stores/index.js");
 require("../../../stores/modules/member.js");
@@ -19,6 +20,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const status = common_vendor.ref("全部");
     const statusN = common_vendor.ref(0);
+    const activity = common_vendor.ref({});
     const pageNum = common_vendor.ref(1);
     const pageSize = 10;
     const totalNum = common_vendor.ref(0);
@@ -50,6 +52,20 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       } else {
         statusN.value = 3;
         getHomeContent(2, 2, 1, pageNum.value);
+      }
+    };
+    const getMyActivity = async () => {
+      if (!common_vendor.index.getStorageSync("token")) {
+        return;
+      }
+      let res = await services_my.getMyActivityAPI();
+      if (res.code === 200) {
+        activity.value = res.data;
+      } else {
+        common_vendor.index.showToast({
+          title: "查询已预约失败",
+          icon: "none"
+        });
       }
     };
     const activities = common_vendor.ref([]);
@@ -90,7 +106,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           sponsorCollege: item.hbKeyword,
           population: item.hbNum,
           limitPopulation: item.hot,
-          sort: item.sort
+          sort: item.sort,
+          lng: item.lng,
+          isClose: item.isClose,
+          isApplication: item.isApplication,
+          hot: item.hot,
+          hbNum: item.hbNum
         }));
         activities.value.push(...innerActivities);
         if (activities.value.length === 0) {
@@ -119,8 +140,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }
       change(nowList.value, 2);
     };
+    const switchToActs = () => {
+      common_vendor.index.navigateTo({
+        url: "/pages/my/components/myactivity/activity"
+      });
+    };
     common_vendor.onLoad(() => {
-      console.log("onLoad!!!");
       common_vendor.index.onNetworkStatusChange((res) => {
         if (!res.isConnected) {
           common_vendor.index.showToast({
@@ -130,23 +155,32 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }
       });
       getHomeContent(0, 0, 0);
+      getMyActivity();
       common_vendor.index.$on("scrolltolower", onScrolltolower);
     });
     common_vendor.onHide(() => {
     });
     return (_ctx, _cache) => {
-      return {
+      return common_vendor.e({
         a: common_vendor.o(tapJoin),
         b: common_vendor.o(tapSignIn),
-        c: common_vendor.o(change),
-        d: common_vendor.o(($event) => status.value = $event),
-        e: common_vendor.p({
+        c: activity.value.length > 0
+      }, activity.value.length > 0 ? {
+        d: common_vendor.t(activity.value[0].userImg2),
+        e: common_vendor.t(activity.value[0].lat),
+        f: common_vendor.t(activity.value[0].hbKeyword),
+        g: common_vendor.o(switchToActs),
+        h: `/pages/activity/ActivityDetails?id=${activity.value[0].activityId}`
+      } : {}, {
+        i: common_vendor.o(change),
+        j: common_vendor.o(($event) => status.value = $event),
+        k: common_vendor.p({
           localdata: statusList.value,
           placeholder: "全部",
           clear: false,
           modelValue: status.value
         }),
-        f: common_vendor.f(activities.value, (item, k0, i0) => {
+        l: common_vendor.f(activities.value, (item, k0, i0) => {
           return {
             a: item.img,
             b: common_vendor.t(item.title),
@@ -156,13 +190,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             f: `/pages/activity/ActivityDetails?id=${item.id}`
           };
         }),
-        g: common_vendor.p({
+        m: common_vendor.p({
           status: finish.value
         })
-      };
+      });
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/index/components/HomeContent.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/index/components/HomeContent.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=HomeContent.js.map

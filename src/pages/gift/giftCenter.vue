@@ -1,88 +1,77 @@
 <template>
-  <view class="container">
+  <PageSkeleton v-if="showSkeleton" />
+  <view v-else class="container">
     <!-- tab导航栏 -->
-    <scroll-view
-      scroll-x="true"
-      class="nav"
-      :scroll-left="navScrollLeft"
-      scroll-with-animation="true"
-    >
-      <view
-        v-for="(navItem, idx) in navData"
-        :key="idx"
-        class="nav-item"
-        :class="{ active: currentTab === idx }"
-        @tap="switchNav(idx)"
-      >
-        {{ navItem.text }}
-      </view>
-    </scroll-view>
-
-    <swiper :current="currentTab" duration="300" @change="switchTab">
-      <swiper-item v-for="(tabItem, idx) in tabData" :key="idx" class="tab-content">
-        <view v-if="idx === 0">
-          <!-- 第一个页面的内容 -->
-          <view>
-            <view class="content">
-              <view class="left">
-                <block v-for="(item, index) in list" :key="index">
-                  <view @click="goToGoodsDetail(item.id)" class="item" v-if="index % 2 === 0">
-                    <image class="item-img" :src="item.coverPicture" mode="widthFix"></image>
-                    <view class="item-title-box">
-                      <view class="item-title goodsname">{{ item.name }}</view>
-                    </view>
-                    <view class="item-title-box">
-                      <view class="item-title">{{ item.introduce }}</view>
-                    </view>
-                    <view class="name">
-                      <image class="item-ava" src="../../static/gifts/R-C.jpg"></image>
-                      <text class="name-title">{{ item.price }}</text>
-                      <view class="heart">
-                        <text></text>
-                      </view>
-                    </view>
-                  </view>
-                </block>
+    <view class="nav">
+      <navigator class="nav-item" url="/pages/gift/components/orderList" open-type="navigate" hover-class="none">
+        <view class="change">
+          兑换记录
+        </view>
+      </navigator>
+      <navigator class="credit" :url="`/pages/my/components/history?creditNum=${credit}`">
+        <image class="credit-img" src="../../static//gifts/blue-score.png" mode="scaleToFill" />
+        <view class="credit-num">
+          {{ credit }}
+          <!-- 10000 -->
+        </view>
+        <view class="credit-right">
+          <image class="credit-right-img" src="../../static/my/blue-arrow-right.png" mode="heightFix" />
+        </view>
+      </navigator>
+    </view>
+    <view>
+      <view class="content">
+        <view class="left">
+          <block v-for="(item, index) in list" :key="index">
+            <view @click="goToGoodsDetail(item.id)" class="item" v-if="index % 2 === 0">
+              <image class="item-img" :src="item.coverPicture" mode="widthFix"></image>
+              <view class="item-title-box">
+                <view class="item-title goodsname">{{ item.name }}</view>
               </view>
-              <view class="right">
-                <block v-for="(item, index) in list" :key="index">
-                  <view @click="goToGoodsDetail(item.id)" class="item" v-if="index % 2 === 1">
-                    <image class="item-img" :src="item.coverPicture" mode="widthFix"></image>
-                    <view class="item-title-box">
-                      <view class="item-title goodsname">{{ item.name }}</view>
-                    </view>
-                    <view class="item-title-box">
-                      <view class="item-title">{{ item.introduce }}</view>
-                    </view>
-                    <view class="name">
-                      <image class="item-ava" src="../../static/gifts/R-C.jpg"></image>
-                      <text class="name-title">{{ item.price }}</text>
-                      <view class="heart">
-                        <text></text>
-                      </view>
-                    </view>
-                  </view>
-                </block>
+              <view class="item-title-box">
+                <view class="item-title">{{ item.introduce }}</view>
+              </view>
+              <view class="name">
+                <image class="item-ava" src="../../static/gifts/R-C.jpg"></image>
+                <text class="name-title">{{ item.price }}</text>
+                <view class="heart">
+                  <text></text>
+                </view>
               </view>
             </view>
-          </view>
+          </block>
         </view>
-
-        <view v-else-if="idx === 1">
-          <!-- 第二个页面的内容 -->
-          <view><order-list></order-list></view>
+        <view class="right">
+          <block v-for="(item, index) in list" :key="index">
+            <view @click="goToGoodsDetail(item.id)" class="item" v-if="index % 2 === 1">
+              <image class="item-img" :src="item.coverPicture" mode="widthFix"></image>
+              <view class="item-title-box">
+                <view class="item-title goodsname">{{ item.name }}</view>
+              </view>
+              <view class="item-title-box">
+                <view class="item-title">{{ item.introduce }}</view>
+              </view>
+              <view class="name">
+                <image class="item-ava" src="../../static/gifts/R-C.jpg"></image>
+                <text class="name-title">{{ item.price }}</text>
+                <view class="heart">
+                  <text></text>
+                </view>
+              </view>
+            </view>
+          </block>
         </view>
-      </swiper-item>
-    </swiper>
+      </view>
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import orderList from './components/orderList.vue'
-
+import PageSkeleton from './PageSkeleton.vue'
 import { ref, reactive, computed } from 'vue'
 import { getGiftList } from '@/services/gift'
 import { onLoad, onShow } from '@dcloudio/uni-app'
+import { getPersonalInf } from '@/services/personalInf'
 
 //过审
 // 获取当前时间点
@@ -115,57 +104,28 @@ import { onLoad, onShow } from '@dcloudio/uni-app'
 //     getGiftLists()
 //   }
 // }
-onLoad(() => {
-  // getA()
-  // 获取宽度
-  getGiftLists()
-  wx.getSystemInfo({
-    success(res) {
-      screenW.value = res.windowWidth
-      console.log(res.windowWidth) // 屏幕宽度
-      const singleNavWidth = res.windowWidth / 5
-      navScrollLeft.value = (currentTab.value - 2) * singleNavWidth
-    },
-  })
-})
+const credit = ref()
+const list = ref([])
+// 是否显示骨架屏
+const showSkeleton = ref(true)
+
+const getPersonal = async () => {
+  const res = await getPersonalInf()
+  console.log(res)
+  credit.value = res.data.credit
+}
 onShow(() => {
   // getA()
   getGiftLists()
+  getPersonal()
 })
-//页面滑动切换
-const screenW = ref<number>()
-const navScrollLeft = ref(0)
-const currentTab = ref(0)
-const navData = ref([{ text: '积分商城' }, { text: '兑换记录' }])
-const tabData = ref([0, 1]) // 两个页面的索引
-
-const switchNav = (idx: number) => {
-  const singleNavWidth = screenW.value / 2
-  navScrollLeft.value = (idx - 2) * singleNavWidth
-  if (currentTab.value === idx) {
-    return false
-  } else {
-    currentTab.value = idx
-  }
-  // getA()
-  getGiftLists()
-}
-const switchTab = (e: any) => {
-  const cur = e.detail.current
-  const singleNavWidth = screenW.value / 2
-  currentTab.value = cur
-  navScrollLeft.value = (cur - 2) * singleNavWidth
-  // getA()
-  getGiftLists()
-}
 
 const getGiftLists = async () => {
   const res = await getGiftList()
+  showSkeleton.value = false
   console.log(res.rows)
   list.value = res.rows
 }
-
-const list = ref([])
 const goToGoodsDetail = (id) => {
   // if (uni.getStorageSync('token')) {
   //   console.log(id)
@@ -190,7 +150,7 @@ const goToGoodsDetail = (id) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /**index.wxss**/
 page {
   width: 100%;
@@ -198,46 +158,70 @@ page {
 }
 
 .container {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   height: 100vh;
-  padding-top: 80rpx;
+  padding-top: 40rpx;
 }
 
 .nav {
   /* 设置tab-nav宽高度 */
-  height: 80rpx;
   width: 100%;
+  height: 105rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  /* 假如您需要并排放置两个带边框的框，
-  可通过将 box-sizing 设置为 "border-box"。 */
-  box-sizing: border-box;
+  .nav-item {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    .change{
+      text-align: center;
+      width: 160rpx;
+      padding: 16rpx;
+      border-radius: 15rpx;
+      background-color: rgb(214, 244, 251);
+      font-size: 30rpx;
+      color: #0077b6;
+      box-shadow: 0 0 20px #e5e4e4;
+    }
+  }
 
-  overflow: hidden;
+  .credit {
+    display: flex;
+    justify-content: end;
+    padding: 40rpx;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(214, 244, 251);
+    border-radius: 20rpx;
+    box-shadow: 0 0 20px #e5e4e4;
 
-  /* 居中 */
-  line-height: 80rpx;
+    .credit-img {
+      width: 30rpx;
+      height: 30rpx;
+      margin-right: 8rpx;
+    }
 
-  background: #f7f7f7;
+    .credit-num {
+      font-size: 35rpx;
+      color: #0077b6;
+    }
 
-  font-size: 16px;
+    .credit-right {
+      display: flex;
+      align-items: center;
+      margin-left: 18rpx;
 
-  /* 规定段落中的文本不进行换行： */
-  white-space: nowrap;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-
-.nav-item {
-  width: 50%;
-  display: inline-block;
-  text-align: center;
-}
-
-.nav-item.active {
-  color: #428ffb;
+      .credit-right-img {
+        height: 25rpx;
+      }
+    }
+  }
 }
 
 .tab-box {
@@ -253,23 +237,15 @@ page {
   overflow-y: scroll;
 }
 
-/*
-.container {
-  padding: 10rpx;
-} */
-
-.content {
-  text-align: justify;
-}
 
 .item {
   background-color: #fff;
-  margin: 10rpx 3%;
   margin-bottom: 20rpx;
   display: inline-block;
   width: 96%;
   border-radius: 20rpx;
   overflow: hidden;
+  box-shadow: 0 0 20px #e5e4e4;
 }
 
 .item-ava {
@@ -305,10 +281,12 @@ page {
   margin: 15rpx;
   line-height: 27rpx;
 }
+
 .goodsname {
   font-size: 30rpx;
   line-height: 35rpx;
 }
+
 .item .name {
   display: flex;
   padding: 0 15rpx;
@@ -346,10 +324,16 @@ page {
   line-height: 10rpx;
 }
 
-.left,
-.right {
-  display: inline-block;
-  vertical-align: top;
-  width: 49%;
+.content {
+  display: flex;
+  justify-content: space-between;
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+  }
 }
 </style>

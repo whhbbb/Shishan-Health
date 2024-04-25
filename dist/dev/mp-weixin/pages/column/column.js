@@ -93,12 +93,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       return common_vendor.e({
         a: id === 0
       }, id === 0 ? {
-        b: "3759cb80-0-" + i0,
+        b: "1f6dcbee-0-" + i0,
         c: common_vendor.p({
           kind: 1
         })
       } : id === 1 ? {
-        e: "3759cb80-1-" + i0,
+        e: "1f6dcbee-1-" + i0,
         f: common_vendor.p({
           kind: 2
         })
@@ -111,6 +111,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o((...args) => $setup.switchTab && $setup.switchTab(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/column/column.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/column/column.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=column.js.map

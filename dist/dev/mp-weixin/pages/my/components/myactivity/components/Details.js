@@ -5,14 +5,12 @@ require("../../../../../utils/http.js");
 require("../../../../../stores/index.js");
 require("../../../../../stores/modules/member.js");
 if (!Array) {
-  const _easycom_uni_tag2 = common_vendor.resolveComponent("uni-tag");
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
-  (_easycom_uni_tag2 + _easycom_uni_icons2)();
+  _easycom_uni_icons2();
 }
-const _easycom_uni_tag = () => "../../../../../node-modules/@dcloudio/uni-ui/lib/uni-tag/uni-tag.js";
 const _easycom_uni_icons = () => "../../../../../node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.js";
 if (!Math) {
-  (_easycom_uni_tag + _easycom_uni_icons)();
+  _easycom_uni_icons();
 }
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "Details",
@@ -53,7 +51,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             population: item.hbNum,
             limitPopulation: item.hot,
             url: props.state == 0 ? `/pages/activity/ActivityDetails?id=${item.activityId}` : item.state == 2 ? `/pages/activity/ActivityDetails?id=${item.id}` : `/pages/activity/ActivityEdit?id=${item.id}`,
-            sort: item.sort
+            sort: item.sort,
+            img: item.lng
           });
         });
       } else {
@@ -63,7 +62,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const isLogin = common_vendor.ref(true);
     const hasActivity = common_vendor.ref(true);
     common_vendor.onMounted(() => {
-      console.log(props.state);
       if (common_vendor.index.getStorageSync("token")) {
         getMyActivity();
       } else {
@@ -88,29 +86,24 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }, isLogin.value && hasActivity.value ? {
         b: common_vendor.f(activities.value, (item, k0, i0) => {
           return common_vendor.e({
-            a: common_vendor.t(item.title),
-            b: item.sort == 1
-          }, item.sort == 1 ? {
-            c: "4dbeae18-0-" + i0,
-            d: common_vendor.p({
-              type: "primary",
-              text: "学术晚茶"
-            })
+            a: item.img,
+            b: common_vendor.t(item.title),
+            c: common_vendor.t(item.time),
+            d: common_vendor.t(item.address),
+            e: item.status == "审核中" || item.status == "待修改"
+          }, item.status == "审核中" || item.status == "待修改" ? {
+            f: common_vendor.t(item.status)
+          } : item.status == "审核通过" ? {
+            h: common_vendor.t(item.status)
+          } : item.status == "进行中" ? {
+            j: common_vendor.t(item.status)
           } : {
-            e: "4dbeae18-1-" + i0,
-            f: common_vendor.p({
-              type: "success",
-              text: "学术社区"
-            })
+            k: common_vendor.t(item.status)
           }, {
-            g: common_vendor.t(item.sponsorCollege),
-            h: common_vendor.t(item.time),
-            i: common_vendor.t(item.address),
-            j: common_vendor.t(item.population),
-            k: common_vendor.t(item.limitPopulation),
-            l: common_vendor.t(item.status),
-            m: item.id,
-            n: item.url
+            g: item.status == "审核通过",
+            i: item.status == "进行中",
+            l: item.id,
+            m: item.url
           });
         })
       } : isLogin.value && !hasActivity.value ? {} : {
@@ -125,6 +118,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/my/components/myactivity/components/Details.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/my/components/myactivity/components/Details.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=Details.js.map

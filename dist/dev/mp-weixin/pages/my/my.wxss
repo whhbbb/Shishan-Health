@@ -24,9 +24,9 @@
 /* 透明度 */
 /* 文章场景相关 */
 .personal {
-  width: 100%;
+  width: 82%;
+  margin: 50rpx auto;
   height: 100%;
-  background-color: #f5f5f5;
 }
 .personal .personal-header {
   width: 100%;
@@ -36,21 +36,21 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30rpx;
+  border-bottom: 3px solid #f5f5f5;
+  margin-bottom: 20rpx;
 }
 .personal .personal-header .personal-header-left {
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
 .personal .personal-header .personal-header-left .personal-header-left-img {
-  width: 120rpx;
-  height: 120rpx;
+  width: 110rpx;
+  height: 110rpx;
   border-radius: 50%;
 }
 .personal .personal-header .personal-header-left .personal-header-left-text {
-  max-width: 70%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,16 +59,40 @@
 }
 .personal .personal-header .personal-header-left .personal-header-left-text .personal-header-left-text-name {
   margin-bottom: 10rpx;
-  font-size: 40rpx;
+  font-size: 34rpx;
+  font-weight: bold;
   color: #333;
 }
 .personal .personal-header .personal-header-left .personal-header-left-text .personal-header-left-text-college {
   font-size: 30rpx;
   color: #999;
 }
-.personal .personal-header .personal-header-right .personal-header-right-img {
-  width: 40rpx;
-  height: 40rpx;
+.personal .personal-header .credit {
+  min-width: 25%;
+  padding: 15rpx;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(214, 244, 251);
+  border-radius: 20rpx;
+}
+.personal .personal-header .credit .credit-img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+}
+.personal .personal-header .credit .credit-num {
+  font-size: 35rpx;
+  color: #0077b6;
+}
+.personal .personal-header .credit .credit-right {
+  display: flex;
+  align-items: center;
+  margin-left: 18rpx;
+}
+.personal .personal-header .credit .credit-right .credit-right-img {
+  height: 25rpx;
 }
 .personal .personal-content {
   width: 100%;
@@ -82,7 +106,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30rpx;
   border-bottom: 2px solid #f5f5f5;
 }
 .personal .personal-content .personal-content-item .personal-content-item-left {

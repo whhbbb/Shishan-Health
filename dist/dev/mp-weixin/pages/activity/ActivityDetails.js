@@ -3,14 +3,6 @@ const common_vendor = require("../../common/vendor.js");
 const utils_http = require("../../utils/http.js");
 require("../../stores/index.js");
 require("../../stores/modules/member.js");
-if (!Array) {
-  const _easycom_uni_tag2 = common_vendor.resolveComponent("uni-tag");
-  _easycom_uni_tag2();
-}
-const _easycom_uni_tag = () => "../../node-modules/@dcloudio/uni-ui/lib/uni-tag/uni-tag.js";
-if (!Math) {
-  _easycom_uni_tag();
-}
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "ActivityDetails",
   props: {
@@ -18,6 +10,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   },
   setup(__props) {
     const props = __props;
+    const countDown = common_vendor.ref();
     const data0 = common_vendor.ref();
     let AId = props.id;
     const getDetailsAPI = (data) => {
@@ -68,6 +61,24 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         });
       }
     };
+    function parseDateForIOS(dateString) {
+      dateString = dateString.replace(/-/g, "/");
+      if (dateString.includes(" ")) {
+        const [datePart, timePart] = dateString.split(" ");
+        dateString = `${datePart} ${timePart.split(":")[0]}:${timePart.split(":")[1]}`;
+      }
+      return new Date(dateString);
+    }
+    const countTime = () => {
+      let now = (/* @__PURE__ */ new Date()).getTime();
+      let endTime = parseDateForIOS(data0.value.lat).getTime() - 2 * 60 * 60 * 1e3;
+      let time = endTime - now;
+      let day = Math.floor(time / (24 * 3600 * 1e3));
+      let hour = Math.floor(time % (24 * 3600 * 1e3) / (3600 * 1e3));
+      let minute = Math.floor(time % (3600 * 1e3) / (60 * 1e3));
+      let second = Math.floor(time % (60 * 1e3) / 1e3);
+      return `${day}天${hour}时${minute}分${second}秒`;
+    };
     common_vendor.onLoad(async (options) => {
       let obj = common_vendor.wx$1.getLaunchOptionsSync();
       let query = null;
@@ -81,7 +92,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         AId = query;
         url = `/system/activity/${query}`;
       }
-      getDetails(url);
+      await getDetails(url);
+      countDown.value = countTime();
+      setInterval(() => {
+        countDown.value = countTime();
+      }, 1e3);
     });
     common_vendor.onHide(() => {
     });
@@ -119,42 +134,33 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: common_vendor.t(data0.value.userImg2),
-        b: common_vendor.t(data0.value.isEnd),
-        c: common_vendor.t(data0.value.hbNum),
-        d: common_vendor.t(data0.value.hot),
-        e: data0.value.sort == 1
-      }, data0.value.sort == 1 ? {
-        f: common_vendor.p({
-          type: "primary",
-          text: "学术晚茶"
-        })
-      } : {
-        g: common_vendor.p({
-          type: "success",
-          text: "学术社区"
-        })
-      }, {
-        h: common_vendor.t(data0.value.hbKeyword),
-        i: common_vendor.t(data0.value.lat),
-        j: common_vendor.t(data0.value.address),
-        k: common_vendor.t(data0.value.cityname == "" ? "无" : data0.value.cityname),
-        l: common_vendor.t(data0.value.img),
-        m: common_vendor.t(data0.value.details),
-        n: common_vendor.t(data0.value.hbNum),
-        o: common_vendor.t(data0.value.hot),
-        p: data0.value.isClose === 0
-      }, data0.value.isClose === 0 ? {
-        q: common_vendor.t(data0.value.startTime)
-      } : data0.value.isApplication.length === 0 && data0.value.isClose === 1 ? {
-        s: common_vendor.o(applyon)
-      } : data0.value.isApplication.length > 0 && data0.value.isClose === 1 ? {} : {}, {
-        r: data0.value.isApplication.length === 0 && data0.value.isClose === 1,
-        t: data0.value.isApplication.length > 0 && data0.value.isClose === 1
+        a: data0.value.lng,
+        b: common_vendor.t(data0.value.userImg2),
+        c: common_vendor.t(data0.value.hbKeyword),
+        d: common_vendor.t(data0.value.lat),
+        e: common_vendor.t(data0.value.img),
+        f: common_vendor.t(data0.value.details),
+        g: common_vendor.t(data0.value.hbNum),
+        h: common_vendor.t(data0.value.hot),
+        i: data0.value.isClose == 2
+      }, data0.value.isClose == 2 ? {} : data0.value.isClose == 1 ? {
+        k: common_vendor.t(countDown.value)
+      } : data0.value.isClose == 0 ? {
+        m: common_vendor.t(data0.value.startTime)
+      } : {}, {
+        j: data0.value.isClose == 1,
+        l: data0.value.isClose == 0,
+        n: data0.value.isClose === 0
+      }, data0.value.isClose === 0 ? {} : data0.value.isApplication.length === 0 && data0.value.isClose === 1 ? {
+        p: common_vendor.o(applyon)
+      } : data0.value.isApplication.length > 0 && data0.value.isClose === 1 ? {} : data0.value.isClose == 2 ? {} : {}, {
+        o: data0.value.isApplication.length === 0 && data0.value.isClose === 1,
+        q: data0.value.isApplication.length > 0 && data0.value.isClose === 1,
+        r: data0.value.isClose == 2
       });
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/activity/ActivityDetails.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/activity/ActivityDetails.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=ActivityDetails.js.map

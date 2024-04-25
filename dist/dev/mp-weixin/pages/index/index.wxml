@@ -1,1 +1,1 @@
-<custom-navbar u-i="2a3c9ea6-0" bind:__l="__l"/><scroll-view bindscrolltolower="{{a}}" class="scroll-view" scroll-y><xs-swiper class="swiper" u-i="2a3c9ea6-1" bind:__l="__l"></xs-swiper><home-content u-i="2a3c9ea6-2" bind:__l="__l"/></scroll-view>
+<custom-navbar u-i="53dc06a2-0" bind:__l="__l"/><scroll-view bindscrolltolower="{{a}}" class="scroll-view" scroll-y><xs-swiper class="swiper" u-i="53dc06a2-1" bind:__l="__l"></xs-swiper><home-content u-i="53dc06a2-2" bind:__l="__l"/></scroll-view>

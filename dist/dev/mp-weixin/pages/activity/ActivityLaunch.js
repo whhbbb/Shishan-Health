@@ -423,14 +423,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }),
         S: common_vendor.f(selectedColleges.value, (college, index, i0) => {
           return {
-            a: "46aa9813-27-" + i0 + "," + ("46aa9813-26-" + i0),
+            a: "59fe309c-27-" + i0 + "," + ("59fe309c-26-" + i0),
             b: common_vendor.o(($event) => populationLimit.value.find((item) => item.college === college).population = $event, index),
             c: common_vendor.p({
               max: 1500,
               modelValue: populationLimit.value.find((item) => item.college === college).population
             }),
             d: index,
-            e: "46aa9813-26-" + i0 + ",46aa9813-25",
+            e: "59fe309c-26-" + i0 + ",59fe309c-25",
             f: common_vendor.p({
               title: `设置${college}的报名人数`,
               type: "line",
@@ -463,7 +463,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         ),
         aa: common_vendor.o(save),
         ab: common_vendor.o(reset),
-        ac: common_vendor.sr(baseform, "46aa9813-0", {
+        ac: common_vendor.sr(baseform, "59fe309c-0", {
           "k": "baseform"
         }),
         ad: common_vendor.p({
@@ -476,6 +476,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/activity/ActivityLaunch.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/activity/ActivityLaunch.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=ActivityLaunch.js.map

@@ -51,10 +51,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             a: order.coverPicture,
             b: common_vendor.t(order.name),
             c: common_vendor.t(order.createTime),
-            d: common_vendor.t(order.nums),
-            e: order.state == 1
+            d: common_vendor.t(order.total),
+            e: common_vendor.t(order.nums),
+            f: order.state == 1
           }, order.state == 1 ? {} : {}, {
-            f: common_vendor.t(order.total),
             g: order.id
           });
         })
@@ -73,6 +73,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/gift/components/orderList.vue"]]);
-wx.createComponent(Component);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/gift/components/orderList.vue"]]);
+wx.createPage(MiniProgramPage);
 //# sourceMappingURL=orderList.js.map

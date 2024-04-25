@@ -25,270 +25,75 @@
 /* 文章场景相关 */
 page {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .viewport {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 20rpx 40rpx;
+  justify-content: flex-start;
+  height: 95%;
 }
-.viewport .login-content {
+.viewport .logo {
+  margin-bottom: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.viewport .logo .title {
+  font-size: 60rpx;
+  color: #0077b6;
+  margin-top: 20rpx;
+}
+.viewport .logo image {
+  width: 220rpx;
+  height: 220rpx;
+  margin-top: 10vh;
+}
+.viewport .lowwer {
+  margin-top: 150rpx;
   width: 80%;
-  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.viewport .lowwer .login-content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 20rpx;
 }
-.viewport .login-content .input {
+.viewport .lowwer .login-content .input {
   width: 100%;
+  margin-bottom: 30rpx;
 }
-.logo {
-  flex: 1;
-  text-align: center;
-  margin-bottom: 60rpx;
-}
-.logo image {
-  width: 220rpx;
-  height: 220rpx;
-  margin-top: 10vh;
-}
-.login {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  height: 60vh;
-  padding: 40rpx 20rpx 20rpx;
-}
-.login .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.viewport .lowwer .login {
   width: 100%;
-  height: 80rpx;
-  font-size: 28rpx;
-  border-radius: 72rpx;
-  color: #fff;
-}
-.login .button .icon {
-  font-size: 40rpx;
-  margin-right: 6rpx;
-}
-.login .rempass {
-  display: block;
-  margin: 20rpx auto;
-  font-size: 24rpx;
-  color: #444;
-}
-.login .phone {
-  background-color: #06afe3;
-}
-.login .wechat {
-  background-color: #06c05f;
-}
-.login .wechat .options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 70rpx;
-}
-.login .wechat .options button {
-  padding: 0;
-  background-color: transparent;
-}
-.login .wechat .icon {
-  font-size: 24rpx;
-  color: #444;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.login .wechat .icon::before {
+.viewport .lowwer .login .button {
+  width: 100%;
+  border-radius: 200rpx;
+  background-color: rgb(214, 243, 251);
+  color: #0077b6;
+  margin-bottom: 10rpx;
+}
+.viewport .lowwer .login .rempass {
+  font-size: 20rpx;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 80rpx;
-  height: 80rpx;
-  margin-bottom: 6rpx;
-  font-size: 40rpx;
-  border: 1rpx solid #444;
-  border-radius: 50%;
 }
-.login .wechat .icon-weixin::before {
-  border-color: #06c05f;
-  color: #06c05f;
+ .is-input-border {
+  border-radius: 200rpx !important;
+  border: 1px solid rgb(13, 152, 232) !important;
 }
-.tips {
-  position: absolute;
-  bottom: 80rpx;
-  left: 20rpx;
-  right: 20rpx;
-  font-size: 23rpx;
-  color: #999;
-  text-align: center;
-}
-.signUp-tip-txt-protocol {
-  color: red;
-}
-.animation-shake {
-  animation-delay: 0s;
-  animation-duration: 0.1s;
-  animation-iteration-count: infinite;
-  animation-name: shake;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-}
-@keyframes shake {
-0% {
-    transform: translate(0, 0) rotate(0deg);
-}
-2% {
-    transform: translate(-4px, 0) rotate(0deg);
-}
-4% {
-    transform: translate(2px, 0) rotate(0deg);
-}
-6% {
-    transform: translate(-3px, 0) rotate(0deg);
-}
-8% {
-    transform: translate(9px, 0) rotate(0deg);
-}
-10% {
-    transform: translate(2px, 0) rotate(0deg);
-}
-12% {
-    transform: translate(-6px, 0) rotate(0deg);
-}
-14% {
-    transform: translate(-7px, 0) rotate(0deg);
-}
-16% {
-    transform: translate(2px, 0) rotate(0deg);
-}
-18% {
-    transform: translate(7px, 0) rotate(0deg);
-}
-20% {
-    transform: translate(-1px, 0) rotate(0deg);
-}
-22% {
-    transform: translate(-10px, 0) rotate(0deg);
-}
-24% {
-    transform: translate(-10px, 0) rotate(0deg);
-}
-26% {
-    transform: translate(3px, 0) rotate(0deg);
-}
-28% {
-    transform: translate(-5px, 0) rotate(0deg);
-}
-30% {
-    transform: translate(4px, 0) rotate(0deg);
-}
-32% {
-    transform: translate(-6px, 0) rotate(0deg);
-}
-34% {
-    transform: translate(-2px, 0) rotate(0deg);
-}
-36% {
-    transform: translate(-6px, 0) rotate(0deg);
-}
-38% {
-    transform: translate(-2px, 0) rotate(0deg);
-}
-40% {
-    transform: translate(4px, 0) rotate(0deg);
-}
-42% {
-    transform: translate(8px, 0) rotate(0deg);
-}
-44% {
-    transform: translate(-3px, 0) rotate(0deg);
-}
-46% {
-    transform: translate(-10px, 0) rotate(0deg);
-}
-48% {
-    transform: translate(4px, 0) rotate(0deg);
-}
-50% {
-    transform: translate(-6px, 0) rotate(0deg);
-}
-52% {
-    transform: translate(6px, 0) rotate(0deg);
-}
-54% {
-    transform: translate(-8px, 0) rotate(0deg);
-}
-56% {
-    transform: translate(5px, 0) rotate(0deg);
-}
-58% {
-    transform: translate(9px, 0) rotate(0deg);
-}
-60% {
-    transform: translate(7px, 0) rotate(0deg);
-}
-62% {
-    transform: translate(1px, 0) rotate(0deg);
-}
-64% {
-    transform: translate(2px, 0) rotate(0deg);
-}
-66% {
-    transform: translate(-2px, 0) rotate(0deg);
-}
-68% {
-    transform: translate(-7px, 0) rotate(0deg);
-}
-70% {
-    transform: translate(-1px, 0) rotate(0deg);
-}
-72% {
-    transform: translate(-6px, 0) rotate(0deg);
-}
-74% {
-    transform: translate(5px, 0) rotate(0deg);
-}
-76% {
-    transform: translate(0, 0) rotate(0deg);
-}
-78% {
-    transform: translate(9px, 0) rotate(0deg);
-}
-80% {
-    transform: translate(-3px, 0) rotate(0deg);
-}
-82% {
-    transform: translate(8px, 0) rotate(0deg);
-}
-84% {
-    transform: translate(-2px, 0) rotate(0deg);
-}
-86% {
-    transform: translate(-1px, 0) rotate(0deg);
-}
-88% {
-    transform: translate(-3px, 0) rotate(0deg);
-}
-90% {
-    transform: translate(4px, 0) rotate(0deg);
-}
-92% {
-    transform: translate(0, 0) rotate(0deg);
-}
-94% {
-    transform: translate(4px, 0) rotate(0deg);
-}
-96% {
-    transform: translate(2px, 0) rotate(0deg);
-}
-98% {
-    transform: translate(-2px, 0) rotate(0deg);
-}
+ .uni-easyinput__content-input {
+  padding-left: 40rpx !important;
+  height: 90rpx !important;
+  font-size: 30rpx !important;
 }

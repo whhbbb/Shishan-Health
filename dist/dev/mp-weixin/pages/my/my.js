@@ -2,6 +2,7 @@
 const common_vendor = require("../../common/vendor.js");
 require("../../stores/index.js");
 const services_personalInf = require("../../services/personalInf.js");
+const services_ActivityLaunch = require("../../services/ActivityLaunch.js");
 const services_Audit = require("../../services/Audit.js");
 require("../../stores/modules/member.js");
 require("../../utils/http.js");
@@ -9,6 +10,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "my",
   setup(__props) {
     common_vendor.ref(/* @__PURE__ */ new Date());
+    const isLaunch = common_vendor.ref(false);
     const isPastTargetDate = common_vendor.ref(true);
     const getA = async () => {
       const res = await services_Audit.getAudit();
@@ -39,10 +41,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       my.value.name = res.data.nickName;
       my.value.college = res.data.dept.deptName;
       my.value.img = res.data.avatar === "" ? "../../static/my/headpic.png" : res.data.avatar;
+      my.value.credit = res.data.credit;
     };
-    common_vendor.onLoad(() => {
-      getPersonal();
-    });
+    const getLaunchPermission = async () => {
+      const res = await services_ActivityLaunch.getLaunchPermissionAPI();
+      if (res.code === 200) {
+        isLaunch.value = true;
+      }
+    };
     common_vendor.onShow(() => {
       getA();
       const token = common_vendor.index.getStorageSync("token");
@@ -50,6 +56,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       if (token) {
         getPersonal();
       }
+      getLaunchPermission();
     });
     return (_ctx, _cache) => {
       return common_vendor.e({
@@ -59,12 +66,19 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         c: common_vendor.t(my.value.name),
         d: common_vendor.t(my.value.college)
       } : {}, {
-        e: common_vendor.o(handleNavigate),
-        f: isPastTargetDate.value
-      }, isPastTargetDate.value ? {} : {});
+        e: islogin.value
+      }, islogin.value ? {
+        f: common_vendor.t(my.value.credit),
+        g: `/pages/my/components/history?creditNum=${my.value.credit}`
+      } : {}, {
+        h: common_vendor.o(handleNavigate),
+        i: isPastTargetDate.value
+      }, isPastTargetDate.value ? {} : {}, {
+        j: isLaunch.value
+      }, isLaunch.value ? {} : {});
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/my/my.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/my/my.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=my.js.map

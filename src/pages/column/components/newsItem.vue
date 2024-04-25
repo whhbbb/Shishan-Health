@@ -1,5 +1,7 @@
 <template>
+  <PageSkeleton v-if="showSkeleton"></PageSkeleton>
   <navigator
+    v-else-if="!showSkeleton && columnContents.length > 0"
     :url="`/pages/column/components/article?kind=${item.kind}&id=${item.id}`"
     class="post-container"
     hover-class="none"
@@ -42,12 +44,19 @@
       <uni-icons type="right" size="20"></uni-icons>
     </view>
   </navigator>
+  <view v-else>
+    <view class="no-content">
+      <!-- <uni-icons type="notice" size="40"></uni-icons>
+      <text>暂无数据</text> -->
+    </view>
+  </view>
 </template>
 
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import { getColumnsAPI, likeUpAPI, likeDownAPI } from '@/services/column'
 import { onShow } from '@dcloudio/uni-app'
+import PageSkeleton from '@/pages/column/PageSkeleton.vue'
 type columnItem = {
   // 精彩专栏编号
   id: number
@@ -76,6 +85,8 @@ const props = defineProps({
     default: 1,
   },
 })
+// 判断是否显示骨架屏
+const showSkeleton = ref(true)
 const columnContents = ref<columnItem[]>([])
 // 点赞或取消点赞
 const likeUp = (id: number, tblLike: object) => {
@@ -121,6 +132,7 @@ const getColumns = async (kind: Number) => {
   console.log(res)
   if (res.code === 200) {
     columnContents.value = res.rows
+    showSkeleton.value = false
   } else {
     uni.showToast({
       title: '获取数据失败',

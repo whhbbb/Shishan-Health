@@ -1,51 +1,31 @@
 <template>
-  <view class="noHistory" v-if="history.length == 0">
-    <view class="noH">暂无记录……</view>
-  </view>
-  <view v-else>
-    <uni-list v-for="(item, index) in history" :key="index">
-      <uni-list-item
-        :title="item.creditNum > 0 ? '+' + item.creditNum : item.creditNum"
-        :note="item.createTime"
-        :rightText="CType(item.creditType)"
-        style="padding: 2vh 0"
-      >
-        <template v-slot:header>
-          <uni-icons
-            v-if="item.creditType == 2"
-            style="margin-right: 2vw"
-            class="icons"
-            type="flag-filled"
-            color="#92aff0"
-            size="25"
-          ></uni-icons>
-          <uni-icons
-            v-else-if="item.creditType == 3"
-            style="margin-right: 2vw"
-            class="icons"
-            type="chatboxes-filled"
-            color="#f1e9e4"
-            size="25"
-          ></uni-icons>
-          <uni-icons
-            v-else-if="item.creditType == 4"
-            style="margin-right: 2vw"
-            class="icons"
-            type="hand-up-filled"
-            color="#c5daf0"
-            size="25"
-          ></uni-icons>
-          <uni-icons
-            v-else
-            style="margin-right: 2vw"
-            class="icons"
-            type="gift-filled"
-            color="#f5c7c3"
-            size="25"
-          ></uni-icons>
-        </template>
-      </uni-list-item>
-    </uni-list>
+  <view class="wrapper">
+    <view class="credit-sum">
+      <view class="credit-sum-content">
+        <view class="credit-num">{{ props.creditNum }}</view>
+        积分
+      </view>
+      <navigator class="credit-role" url="/pages/my/components/integral">
+        积分规则
+        <image
+          class="credit-role-img"
+          src="../../../static/my/black-arrow-right.png"
+          mode="heightFix"
+        />
+      </navigator>
+    </view>
+    <view class="credit-details">
+      <view class="month-details" v-for="history in historys" :key="history.month">
+        <view class="month">{{ history.month }}</view>
+        <view class="history-details" v-for="item in history.details" :key="item.id">
+          <view class="history-content">
+            <view class="history-title">{{ CType(item.creditType) }}</view>
+            <view class="history-time">{{ item.createTime }}</view>
+          </view>
+          <view class="history-credit">{{ editCredit(item.creditType,item.creditNum) }}</view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -54,12 +34,75 @@ import { ref, reactive } from 'vue'
 import { onLoad, onShow } from '@dcloudio/uni-app'
 
 import { getCreidHistory } from '@/services/gift'
+
+// 记录的字段
+interface History {
+  creditType: number
+  createTime: string
+  creditNum: number
+}
+
+// 获取props
+const props = defineProps<{
+  creditNum: string
+}>()
+const historys = ref([])
+
+// 获取积分历史
 const getCreditH = async () => {
   const res = await getCreidHistory()
   console.log(res.rows)
-  history.value = res.rows
+  historys.value = sortGroupBy(groupBy(res.rows))
 }
-const history = ref([])
+// 积分类型
+const CType = (n:number) => {
+  if (n == 2) {
+    return '参加活动'
+  } else if (n == 3) {
+    return '意见反馈'
+  } else if (n == 4) {
+    return '推荐活动'
+  } else {
+    return '积分兑换'
+  }
+}
+// 积分数值
+const editCredit = (n:number,num:number) => {
+  if(n==5){
+    return num
+  }else{
+    return '+'+num
+  }
+}
+//根据日期按月分组记录
+const groupBy = (array:History[]) => {
+  const map = new Map()
+  array.forEach((item) => {
+    const key = item.createTime.slice(0, 7)
+    if (map.has(key)) {
+      map.get(key).push(item)
+    } else {
+      map.set(key, [item])
+    }
+  })
+  return map
+}
+// 对groupby的结果进行排序
+const sortGroupBy = (map:Map<string, History[]>) => {
+  const keys = Array.from(map.keys())
+  keys.sort((a, b) => {
+    return a > b ? -1 : 1
+  })
+  return keys.map((key) => {
+    return {
+      month: key,
+      details: map.get(key),
+    }
+  })
+}
+
+
+
 onLoad(() => {
   if (!uni.getStorageSync('token')) {
     uni.showToast({
@@ -81,29 +124,88 @@ onShow(() => {
     return
   }
 })
-const CType = (n) => {
-  if (n == 2) {
-    return '参加活动'
-  } else if (n == 3) {
-    return '意见反馈'
-  } else if (n == 4) {
-    return '推荐活动'
-  } else {
-    return '积分兑换'
-  }
-}
 </script>
 
-<style>
-.noHistory {
+<style lang="scss">
+.wrapper{
+  width: 85%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
-  height: 100vh;
-  box-shadow: inset 2px 2px 4px rgb(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.noH {
-  color: #000;
-  margin: auto;
+  flex-direction: column;
+  padding-top: 50rpx;
+  .credit-sum{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60rpx;
+    width: 100%;
+    height: 160rpx;
+    border-radius: 20rpx;
+    box-shadow: 0 0 20px #e5e4e4;
+    .credit-sum-content{
+      display: flex;
+      align-items: center;
+      .credit-num{
+        font-size: 55rpx;
+        font-weight: bold;
+        margin-right: 10rpx;
+      }
+    }
+    .credit-role{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 30rpx;
+      .credit-role-img{
+        height: 25rpx;
+        margin-left: 8rpx;
+      }
+    }
+  }
+  .credit-details{
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+    margin-top: 30rpx;
+    border-radius: 20rpx;
+    box-shadow: 0 0 20px #e5e4e4;
+    min-height: 100rpx;
+    .month-details{
+      display: flex;
+      flex-direction: column;
+      .month{
+        font-size: 35rpx;
+        padding-bottom: 20rpx;
+        border-bottom: 1.5px solid #e5e4e4;
+        margin-bottom: 20rpx;
+      }
+      .history-details{
+        display: flex;
+        padding: 0 30rpx;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30rpx;
+        .history-content{
+          display: flex;
+          flex-direction: column;
+          .history-title{
+            font-size: 32rpx;
+            color: #333;
+          }
+          .history-time{
+            font-size: 25rpx;
+            color: #999;
+          }
+        }
+        .history-credit{
+          display: flex;
+          align-items: center;
+          font-size: 38rpx;
+          color: #000;
+        }
+      }
+    }
+  }
 }
 </style>

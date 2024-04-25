@@ -16,7 +16,10 @@ console.log(safeAreaInsets)
 .navbar {
   // padding-top: 47px;
   padding-bottom: 30rpx;
-  background-color: aqua;
+  box-shadow: 0 0 20px #e5e4e4;
+  color: #000;
+  font-size: 40rpx;
+  background-color: #fff;
   text-align: center;
 }
 </style>

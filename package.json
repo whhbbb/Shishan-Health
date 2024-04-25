@@ -1,9 +1,8 @@
 {
-  "name": "uni-app-xiaotuxian",
+  "name": "uni-app-xswc",
   "version": "0.0.0",
   "author": {
-    "name": "itheima",
-    "url": "https://web.itheima.com/"
+    "name": "xswc"
   },
   "scripts": {
     "dev:app": "uni -p app",

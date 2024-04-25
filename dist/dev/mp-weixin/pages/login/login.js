@@ -23,64 +23,59 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const logIn = () => {
       console.log(remPassword.value);
       console.log(logInInfo.value);
-      console.log(agree.value);
-      if (agree.value) {
-        if (logInInfo.value.username == "") {
-          common_vendor.index.showToast({
-            title: "用户名不能为空！",
-            icon: "none",
-            duration: 1e3
-          });
-          return;
-        }
-        if (logInInfo.value.password == "") {
-          common_vendor.index.showToast({
-            title: "密码不能为空！",
-            icon: "none",
-            duration: 1e3
-          });
-          return;
-        } else {
-          services_logIn.logInAPI({
-            username: logInInfo.value.username,
-            password: logInInfo.value.password
-          }).then((res) => {
-            console.log(logInInfo.value);
-            console.log(res);
-            if (res.code === 200) {
-              common_vendor.index.showToast({
-                title: "登录成功",
-                icon: "success",
-                duration: 1e3
-              });
-              setTimeout(() => {
-                common_vendor.index.switchTab({
-                  url: "/pages/index/index"
-                });
-              }, 2e3);
-              common_vendor.index.setStorageSync("token", res.token);
-              if (remPassword.value) {
-                common_vendor.wx$1.setStorage({
-                  key: "userPass_username",
-                  data: logInInfo.value.username
-                });
-                common_vendor.wx$1.setStorage({
-                  key: "userPass_password",
-                  data: utils_random.randomWord(99) + common_vendor.gBase64.encode(logInInfo.value.password)
-                });
-                console.log(utils_random.randomWord(99) + common_vendor.gBase64.encode(logInInfo.value.password));
-              }
-            } else {
-              common_vendor.index.showToast({
-                title: "密码错误",
-                icon: "error",
-                duration: 1e3
-              });
-            }
-          });
-        }
+      if (logInInfo.value.username == "") {
+        common_vendor.index.showToast({
+          title: "用户名不能为空！",
+          icon: "none",
+          duration: 1e3
+        });
+        return;
+      }
+      if (logInInfo.value.password == "") {
+        common_vendor.index.showToast({
+          title: "密码不能为空！",
+          icon: "none",
+          duration: 1e3
+        });
+        return;
       } else {
-        shakeAnimation();
+        services_logIn.logInAPI({
+          username: logInInfo.value.username,
+          password: logInInfo.value.password
+        }).then((res) => {
+          console.log(logInInfo.value);
+          console.log(res);
+          if (res.code === 200) {
+            common_vendor.index.showToast({
+              title: "登录成功",
+              icon: "success",
+              duration: 1e3
+            });
+            setTimeout(() => {
+              common_vendor.index.reLaunch({
+                url: "/pages/index/index"
+              });
+            }, 2e3);
+            common_vendor.index.setStorageSync("token", res.token);
+            if (remPassword.value) {
+              common_vendor.wx$1.setStorage({
+                key: "userPass_username",
+                data: logInInfo.value.username
+              });
+              common_vendor.wx$1.setStorage({
+                key: "userPass_password",
+                data: utils_random.randomWord(99) + common_vendor.gBase64.encode(logInInfo.value.password)
+              });
+              console.log(utils_random.randomWord(99) + common_vendor.gBase64.encode(logInInfo.value.password));
+            }
+          } else {
+            common_vendor.index.showToast({
+              title: "密码错误",
+              icon: "error",
+              duration: 1e3
+            });
+          }
+        });
       }
     };
     common_vendor.onLoad(async () => {
@@ -110,19 +105,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }
       });
     });
-    const agree = common_vendor.ref(false);
-    const animation = common_vendor.ref("");
-    const agreeChange = () => {
-      agree.value = !agree.value;
-    };
-    const shakeAnimation = () => {
-      console.log("抖动");
-      common_vendor.index.showToast({ title: "请您勾选同意协议", icon: "none" });
-      animation.value = "shake";
-      setTimeout(() => {
-        animation.value = "";
-      }, 900);
-    };
     const remPassword = common_vendor.ref(false);
     const remPasswordChange = () => {
       remPassword.value = !remPassword.value;
@@ -143,14 +125,11 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }),
         e: common_vendor.o(logIn),
         f: remPassword.value,
-        g: common_vendor.o(remPasswordChange),
-        h: agree.value,
-        i: common_vendor.o(agreeChange),
-        j: common_vendor.n("animation-" + animation.value)
+        g: common_vendor.o(remPasswordChange)
       };
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/login/login.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/login/login.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=login.js.map

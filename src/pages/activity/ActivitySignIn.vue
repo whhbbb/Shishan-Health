@@ -154,4 +154,9 @@ button {
   width: 80%;
   margin: 1vh 10%;
 }
+
+#scan{
+  background-color: #0077b6;
+  color: #fff;
+}
 </style>

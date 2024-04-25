@@ -321,6 +321,8 @@ const submit = () => {
         margin-top: 70rpx;
         width: 40%;
         font-size: 35rpx;
+        color: #fff;
+        background-color: #0077b6;
       }
     }
   }

@@ -79,6 +79,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     l: $options._padding
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/feidian/计算机设计大赛/xswc_cs/node_modules/@dcloudio/uni-ui/lib/uni-section/uni-section.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/node_modules/@dcloudio/uni-ui/lib/uni-section/uni-section.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=uni-section.js.map

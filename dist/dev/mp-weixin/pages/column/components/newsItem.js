@@ -10,8 +10,9 @@ if (!Array) {
 }
 const _easycom_uni_icons = () => "../../../node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.js";
 if (!Math) {
-  _easycom_uni_icons();
+  (PageSkeleton + _easycom_uni_icons)();
 }
+const PageSkeleton = () => "../PageSkeleton.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "newsItem",
   props: {
@@ -22,6 +23,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   },
   setup(__props) {
     const props = __props;
+    const showSkeleton = common_vendor.ref(true);
     const columnContents = common_vendor.ref([]);
     const likeUp = (id, tblLike) => {
       if (common_vendor.index.getStorageSync("token")) {
@@ -64,6 +66,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       console.log(res);
       if (res.code === 200) {
         columnContents.value = res.rows;
+        showSkeleton.value = false;
       } else {
         common_vendor.index.showToast({
           title: "获取数据失败",
@@ -79,8 +82,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       getColumns(props.kind);
     });
     return (_ctx, _cache) => {
-      return {
-        a: common_vendor.f(columnContents.value, (item, index, i0) => {
+      return common_vendor.e({
+        a: showSkeleton.value
+      }, showSkeleton.value ? {} : !showSkeleton.value && columnContents.value.length > 0 ? {
+        c: common_vendor.f(columnContents.value, (item, index, i0) => {
           return common_vendor.e({
             a: item.img,
             b: common_vendor.t(item.title),
@@ -93,19 +98,21 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             g: common_vendor.o(($event) => likeUp(item.id, item.tblLike), item.id)
           }, {
             h: common_vendor.t(item.likeCount),
-            i: "8de1a188-0-" + i0,
+            i: "8de1a188-1-" + i0,
             j: `/pages/column/components/article?kind=${item.kind}&id=${item.id}`,
             k: item.id
           });
         }),
-        b: common_vendor.p({
+        d: common_vendor.p({
           type: "right",
           size: "20"
         })
-      };
+      } : {}, {
+        b: !showSkeleton.value && columnContents.value.length > 0
+      });
     };
   }
 });
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/column/components/newsItem.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/column/components/newsItem.vue"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=newsItem.js.map

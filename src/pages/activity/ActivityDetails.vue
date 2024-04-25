@@ -1,11 +1,14 @@
 <template>
   <view class="container">
-  <view class="detail">
-    <view class="top">
-      <view class="detail-title">
-        {{ data0.userImg2 }}
+    <view class="detail">
+      <view class="img-wrapper">
+        <image class="img" :src="data0.lng" />
       </view>
-      <view class="detail-content">
+      <view class="top">
+        <view class="detail-title">
+          {{ data0.userImg2 }}
+        </view>
+        <!-- <view class="detail-content">
         <view class="status">
           {{ data0.isEnd }}
         </view>
@@ -18,65 +21,67 @@
           <uni-tag v-if="data0.sort == 1" type="primary" text="学术晚茶" />
           <uni-tag v-else type="success" text="学术社区" />
         </view>
+      </view> -->
       </view>
-    </view>
-    <view class="middle">
-      <view class="sponsor"> 发起学院：{{ data0.hbKeyword }} </view>
-      <view class="time">
-        <image class="img" src="../../static/activity/clock.png" />{{ data0.lat }}
-      </view>
-      <view class="address">
+      <view class="middle">
+        <view class="sponsor">
+          <image class="img" src="../../static/activity/loco.png" />
+          {{ data0.hbKeyword }}
+        </view>
+        <view class="time">
+          <image class="img" src="../../static/bottomBar/sign-in-black.png" />{{ data0.lat }}
+        </view>
+        <!-- <view class="address">
         <image class="img" src="../../static/activity/address.png" />{{ data0.address }}
       </view>
       <view class="address">
         <image class="img" src="../../static/activity/address.png" />线上地址：{{
           data0.cityname == '' ? '无' : data0.cityname
         }}
+      </view> -->
       </view>
-    </view>
-    <view class="bottom">
-      <view class="sponsor-intro">
-        <view class="title"> 主讲人简介： </view>
-        <view class="intro">
-          {{ data0.img }}
+      <view class="bottom">
+        <view class="sponsor-intro">
+          <view class="title"> 主讲人简介： </view>
+          <view class="intro">
+            {{ data0.img }}
+          </view>
+        </view>
+        <view class="activity-intro">
+          <view class="title"> 活动简介： </view>
+          <view class="intro">
+            {{ data0.details }}
+          </view>
         </view>
       </view>
-      <view class="activity-intro">
-        <view class="title"> 活动简介： </view>
-        <view class="intro">
-          {{ data0.details }}
-        </view>
-      </view>
     </view>
-  </view>
     <view class="footer">
-      <view class="footer-info">
-        <view>
-          {{ data0.hbNum }}/{{data0.hot}}
+      <view class="footer-inner">
+        <view class="footer-info">
+          <view>
+            {{ data0.hbNum }}/{{ data0.hot }}
+          </view>
+          <view v-if="data0.isClose == 2">还有0天截止</view>
+          <view v-else-if="data0.isClose == 1" class="start">
+            <view>报名截止倒计时：</view>
+            <view>{{ countDown }}</view>
+          </view>
+          <view v-else-if="data0.isClose == 0" class="start">
+            <view>报名开始时间为：</view>
+            <view>{{ data0.startTime }}</view>
+          </view>
         </view>
-        <view>还有天截止</view>
-      </view>
-      <view class="activity-btn">
-        <div class="btn hhh" v-if="data0.isClose === 0">
-          <button type="default" class="hhh-btn">报名未开始</button>
-          <span class="span">报名开始时间为：{{ data0.startTime }}</span>
-        </div>
-        <button
-          type="primary"
-          v-else-if="data0.isApplication.length === 0 && data0.isClose === 1"
-          class="btn"
-          @click="applyon"
-        >
-          报名
-        </button>
-        <button
-          type="default"
-          v-else-if="data0.isApplication.length > 0 && data0.isClose === 1"
-          class="btn"
-        >
-          已报名
-        </button>
-        <button type="default" v-else class="btn">报名截止</button>
+        <view class="activity-btn">
+          <button class="btn" v-if="data0.isClose === 0" type="default">报名未开始</button>
+          <button type="default" v-else-if="data0.isApplication.length === 0 && data0.isClose === 1" class="btn"
+            @click="applyon">
+            报名
+          </button>
+          <button type="default" v-else-if="data0.isApplication.length > 0 && data0.isClose === 1" class="btn-active">
+            已报名
+          </button>
+          <button type="default" v-else-if="data0.isClose == 2" class="btn">报名截止</button>
+        </view>
       </view>
     </view>
   </view>
@@ -103,13 +108,15 @@ type DataProps = {
   startTime: string
   sort: number
   cityname: string
+  lng: string
 }
 
+const countDown = ref<string>()
 const data0 = ref<DataProps>()
 const props = defineProps<{
   id: number
 }>()
-let AId=props.id;
+let AId = props.id;
 const getDetailsAPI = (data: any) => {
   return http<any>({
     url: data,
@@ -159,11 +166,37 @@ const apply = async (data: any) => {
   }
 }
 
+function parseDateForIOS(dateString) {
+  // 将日期字符串中的连字符(-)替换为斜杠(/)
+  dateString = dateString.replace(/-/g, '/');
+
+  // 如果日期字符串包含时间部分，则将时间部分以空格分隔，并移除秒和时区信息
+  if (dateString.includes(' ')) {
+    const [datePart, timePart] = dateString.split(' ');
+    dateString = `${datePart} ${timePart.split(':')[0]}:${timePart.split(':')[1]}`;
+  }
+
+  return new Date(dateString);
+}
+
+// 写一个实时倒计时
+const countTime = () => {
+  let now = new Date().getTime()
+  let endTime = parseDateForIOS(data0.value.lat).getTime()-2*60*60*1000
+  // endTime前两个小时
+  let time = endTime - now
+  let day = Math.floor(time / (24 * 3600 * 1000))
+  let hour = Math.floor((time % (24 * 3600 * 1000)) / (3600 * 1000))
+  let minute = Math.floor((time % (3600 * 1000)) / (60 * 1000))
+  let second = Math.floor((time % (60 * 1000)) / 1000)
+  return `${day}天${hour}时${minute}分${second}秒`
+}
+
 onLoad(async (options) => {
   let obj = wx.getLaunchOptionsSync()
   let query = null
   let url = `/system/activity/${props.id}`
-  console.log(props.id+"11111")
+  console.log(props.id + "11111")
   if (options.scene || obj.query.scene) {
     console.log('options.scene', options)
     console.log('obj.query.scene', obj.query)
@@ -171,12 +204,16 @@ onLoad(async (options) => {
     // query = options ? encodeURIComponent(options.scene) : encodeURIComponent(obj.query.scene);
     query = options ? decodeURIComponent(options.scene) : decodeURIComponent(obj.query.scene)
     console.log(query)
-    AId=query;
+    AId = query;
     url = `/system/activity/${query}`
   }
-  getDetails(url)
+  await getDetails(url)
+  countDown.value=countTime()
+  setInterval(() => {
+    countDown.value=countTime()
+  }, 1000)
 })
-onHide(() => {})
+onHide(() => { })
 //报名函数
 const applyon = () => {
   if (uni.getStorageSync('token')) {
@@ -215,31 +252,46 @@ const applyon = () => {
 </script>
 
 <style lang="scss">
-.container{
+.container {
   display: flex;
   flex-direction: column;
 }
+
 .detail {
   // overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 90%;
+  width: 82%;
   margin: 0 auto;
-  flex:1;
+  flex: 1;
   padding-bottom: 174rpx;
   overflow: hidden;
+
+  .img-wrapper {
+    margin-top: 20rpx;
+    width: 100%;
+    height: 70vh;
+    background-color: #6b6a6a;
+    border-radius: 15rpx;
+
+    .img {
+      width: 100%;
+      height: 100%;
+      border-radius: 15rpx;
+    }
+  }
+
   .top {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 20rpx;
+    margin-top: 35rpx;
+    margin-bottom: 15rpx;
 
     .detail-title {
-      font-size: 44rpx;
+      font-size: 38rpx;
       // font-weight: bold;
-      margin: 10rpx 0 0 10rpx;
-      margin-bottom: 15rpx;
     }
 
     .detail-content {
@@ -272,7 +324,7 @@ const applyon = () => {
   }
 
   .middle {
-    height: 500rpx;
+    height: 140rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -284,7 +336,12 @@ const applyon = () => {
       align-items: center;
       font-size: 30rpx;
       color: #000000;
-      border-bottom: 1px solid #d6d6d6;
+
+      .img {
+        width: 30rpx;
+        height: 30rpx;
+        margin-right: 10rpx;
+      }
     }
 
     .time {
@@ -293,7 +350,6 @@ const applyon = () => {
       flex: 1;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #d6d6d6;
 
       .img {
         width: 30rpx;
@@ -352,50 +408,62 @@ const applyon = () => {
 
 
 }
-.footer {
-  color:#0077B6;
-    font-size: 26rpx;
-    padding:15rpx;
-    justify-content: space-evenly;
-    position: fixed;
-    bottom: 0;
-    height: 100rpx;
-    box-shadow:0px -0.5px 0.5rpx #A6AAB2;
-    background-color:#F5F6F7 ;
-    width: 100%;
-  display: flex;
-  flex-direction: row;
 
+.footer {
+  height: 150rpx;
+  color: #0077B6;
+  font-size: 26rpx;
+  padding: 30rpx 0 30rpx 0;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0px -0.5px 0.5rpx #E7E8E9;
+  background-color: #F5F6F7;
+  width: 100%;
+
+  .footer-inner {
+    margin: 0 auto;
+    width: 82%;
+    display: flex;
+    justify-content: space-between;
+    .footer-info{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+      .start{
+        font-size: 20rpx;
+      }
+    }
     .activity-btn {
       display: flex;
       justify-content: center;
-      width:40%;
+      align-items: center;
+      height: 100%;
+      width: 60%;
+
       .btn {
-        width:100%;
-        color:#0077B6;
-        border-radius: 40rpx;
-        background-color: hsl(194, 84%, 51%,15%) ;
-
-        font-size:30rpx;
-      }
-      .hhh {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        .hhh-btn {
-          width: 40%;
-
-        }
-        .span {
-          text-align: center;
-          color: #6b6a6a;
-          font-size: 15px;
-          // margin-bottom: 10rpx;
-        }
+        height: 90rpx;
+        color: #0077B6;
+        border-radius: 40rpx;
+        background-color: hsl(194, 84%, 51%, 15%);
+        font-size: 35rpx;
+        font-weight: bold;
+      }
+      .btn-active{
+        width: 100%;
+        height: 90rpx;
+        color: #666666;
+        border-radius: 40rpx;
+        background-color: #d9d9d9;
+        font-size: 35rpx;
+        font-weight: bold;
       }
     }
   }
+}
+
 .code-view {
   margin: 20rpx auto;
   padding-bottom: 30rpx;

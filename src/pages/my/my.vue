@@ -3,12 +3,16 @@ import { useMemberStore } from '@/stores'
 import { ref, computed } from 'vue'
 import { getPersonalInf } from '@/services/personalInf'
 import { onLoad, onShow } from '@dcloudio/uni-app'
+import { getLaunchPermissionAPI } from '@/services/ActivityLaunch'
 //过审
 // 获取当前时间点
 const currentTime = ref(new Date())
 
 // 计算2023年11月17号的时间点
 const targetDate = new Date('2023-11-23')
+
+// 用户权限字段
+const isLaunch = ref<boolean>(false)
 
 // 判断当前时间是否已经过了2023年11月17号
 import { getAudit } from '@/services/Audit'
@@ -25,6 +29,7 @@ type person = {
   img: string
   // 学院
   college: string
+  credit?: number
 }
 const islogin = ref(false)
 const my = ref<person>({
@@ -55,25 +60,16 @@ const getPersonal = async () => {
   // my.value.img=res.data.img
   my.value.college = res.data.dept.deptName
   my.value.img = res.data.avatar === '' ? '../../static/my/headpic.png' : res.data.avatar
+  my.value.credit = res.data.credit
 }
-onLoad(() => {
-  // if (uni.getStorageSync('token')) {
-  getPersonal()
-  // } else {
-  //   wx.showToast({
-  //     title: '您尚未登录，请先登录',
-  //     icon: 'none',
-  //     duration: 1000,
-  //     complete: () => {
-  //       setTimeout(() => {
-  //         uni.navigateTo({
-  //           url: '/pages/login/login',
-  //         })
-  //       }, 1000)
-  //     },
-  //   })
-  // }
-})
+
+// 判断用户是否有发起活动的权限
+const getLaunchPermission = async () => {
+  const res = await getLaunchPermissionAPI()
+  if(res.code ===200){
+    isLaunch.value = true
+  }
+}
 
 onShow(() => {
   getA()
@@ -82,6 +78,7 @@ onShow(() => {
   if (token) {
     getPersonal()
   }
+  getLaunchPermission()
 })
 </script>
 
@@ -109,9 +106,23 @@ onShow(() => {
           <view class="personal-header-left-text-college"> 去登陆！ </view>
         </view>
       </view>
-      <view class="personal-header-right">
-        <image class="personal-header-right-img" src="../../static/my/arrow-right.png" />
-      </view>
+      <navigator v-if="islogin" class="credit" :url="`/pages/my/components/history?creditNum=${my.credit}`">
+        <image
+        class="credit-img"
+          src="../../static//gifts/blue-score.png"
+          mode="scaleToFill"
+        />
+        <view class="credit-num">
+          {{ my.credit }}
+        </view>
+        <view class="credit-right">
+          <image
+            class="credit-right-img"
+            src="../../static/my/blue-arrow-right.png"
+            mode="heightFix"
+          />
+        </view>
+      </navigator>
     </navigator>
     <view class="personal-content">
       <navigator class="personal-content-item" url="/pages/my/components/myactivity/activity">
@@ -123,7 +134,7 @@ onShow(() => {
           <image class="personal-content-item-right-img" src="../../static/my/arrow-right.png" />
         </view>
       </navigator>
-      <navigator class="personal-content-item" url="/pages/my/components/integral">
+      <!-- <navigator class="personal-content-item" url="/pages/my/components/integral">
         <view class="personal-content-item-left">
           <image class="personal-content-item-left-img" src="../../static/my/user-integral.png" />
           <view class="personal-content-item-left-text"> 积分规则 </view>
@@ -131,16 +142,7 @@ onShow(() => {
         <view class="personal-content-item-right">
           <image class="personal-content-item-right-img" src="../../static/my/arrow-right.png" />
         </view>
-      </navigator>
-      <navigator class="personal-content-item" url="/pages/my/components/history">
-        <view class="personal-content-item-left">
-          <image class="personal-content-item-left-img" src="../../static/my/set_admin.png" />
-          <view class="personal-content-item-left-text"> 积分记录 </view>
-        </view>
-        <view class="personal-content-item-right">
-          <image class="personal-content-item-right-img" src="../../static/my/arrow-right.png" />
-        </view>
-      </navigator>
+      </navigator> -->
       <navigator class="personal-content-item" url="/pages/my/components/contactUs">
         <view class="personal-content-item-left">
           <image class="personal-content-item-left-img" src="../../static/my/user-call.png" />
@@ -172,6 +174,19 @@ onShow(() => {
           <image class="personal-content-item-right-img" src="../../static/my/arrow-right.png" />
         </view>
       </navigator>
+      <navigator
+        v-if="isLaunch"
+        class="personal-content-item"
+        url="/pages/activity/ActivityLaunch"
+      >
+        <view class="personal-content-item-left">
+          <image class="personal-content-item-left-img" src="../../static/my/user-activity.png" />
+          <view class="personal-content-item-left-text"> 发起活动 </view>
+        </view>
+        <view class="personal-content-item-right">
+          <image class="personal-content-item-right-img" src="../../static/my/arrow-right.png" />
+        </view>
+      </navigator>
     </view>
   </view>
 </template>
@@ -181,9 +196,9 @@ onShow(() => {
 // 个人中心
 //
 .personal {
-  width: 100%;
+  width: 82%;
+  margin: 50rpx auto;
   height: 100%;
-  background-color: #f5f5f5;
 
   .personal-header {
     width: 100%;
@@ -193,22 +208,22 @@ onShow(() => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30rpx;
+    border-bottom: 3px solid #f5f5f5;
+    margin-bottom: 20rpx;
 
     .personal-header-left {
       display: flex;
-      flex-direction: row;
       justify-content: flex-start;
       align-items: center;
 
       .personal-header-left-img {
-        width: 120rpx;
-        height: 120rpx;
+        width: 110rpx;
+        height: 110rpx;
         border-radius: 50%;
       }
 
       .personal-header-left-text {
-        max-width: 70%;
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -217,7 +232,8 @@ onShow(() => {
 
         .personal-header-left-text-name {
           margin-bottom: 10rpx;
-          font-size: 40rpx;
+          font-size: 34rpx;
+          font-weight: bold;
           color: #333;
         }
 
@@ -227,11 +243,31 @@ onShow(() => {
         }
       }
     }
-
-    .personal-header-right {
-      .personal-header-right-img {
-        width: 40rpx;
-        height: 40rpx;
+    .credit{
+      min-width: 25%;
+      padding: 15rpx;
+      height: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(214, 244, 251);
+      border-radius: 20rpx;
+      .credit-img{
+        width: 30rpx;
+        height: 30rpx;
+        margin-right: 8rpx;
+      }
+      .credit-num{
+        font-size: 35rpx;
+        color: #0077b6;
+      }
+      .credit-right{
+        display: flex;
+        align-items: center;
+        margin-left: 18rpx;
+        .credit-right-img{
+          height: 25rpx;
+        }
       }
     }
   }
@@ -248,7 +284,6 @@ onShow(() => {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 30rpx;
       border-bottom: 2px solid #f5f5f5;
 
       .personal-content-item-left {

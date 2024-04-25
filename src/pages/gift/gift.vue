@@ -37,6 +37,11 @@
           :inverted="true"
           type="success"
         />
+        <view class="introduce">
+          <view class="intro-line"></view>
+          <view class="content">礼品介绍</view>
+          <view class="intro-line"></view>
+        </view>
         <text class="text-remark">{{ goodsdata.introduce }}</text>
       </view>
       <view class="temp"></view>
@@ -213,9 +218,25 @@ const applyExchange = async (data) => {
 }
 const immeBuy = () => {
   console.log('购买')
+  if(goodsnum.value > goodsdata.value.allnums){
+    uni.showToast({
+      title: '兑换数量超出库存',
+      icon: 'error',
+      duration: 2000,
+    })
+    return
+  }
   if (mycredit.value < goodsnum.value * goodsdata.value.price) {
     uni.showToast({
       title: '剩余积分不足',
+      icon: 'error',
+      duration: 2000,
+    })
+    return
+  }
+  if(goodsnum.value == 0){
+    uni.showToast({
+      title: '请选择兑换数量',
       icon: 'error',
       duration: 2000,
     })
@@ -255,7 +276,7 @@ page {
 /* 直接设置swiper属性 */
 .swiper-wrapper{
   margin-top: 20rpx;
-  height: 800rpx;
+  height: 900rpx;
   width: 100%;
   .swiper{
     width: 82%;
@@ -326,6 +347,7 @@ swiper-item image {
 .tag {
   margin-bottom: 10rpx;
 }
+
 .line_flag {
   width: 80rpx;
   height: 1rpx;
@@ -341,6 +363,24 @@ swiper-item image {
   margin: 20rpx 0rpx;
   background-color: gainsboro;
   text-align: center;
+}
+.introduce{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx 0;
+  .intro-line{
+    width: 100rpx;
+    height: 1rpx;
+    background-color: gainsboro;
+    text-align: center;
+  }
+  .content{
+    font-size: 30rpx;
+    margin: 0 20rpx;
+    color: rgb(147, 147, 147);
+  }
+
 }
 .detail-nav {
   display: flex;
@@ -415,6 +455,7 @@ text {
   margin: 10rpx;
 }
 .text-remark {
+  text-indent: 50rpx;
   display: block;
   font-size: 27rpx;
 }

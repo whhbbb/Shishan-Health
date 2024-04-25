@@ -4,6 +4,118 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/my/components/myactivity/activity",
+          "pathName": "pages/my/components/myactivity/activity",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/gift/components/orderList",
+          "pathName": "pages/gift/components/orderList",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/recommend/makeRecd",
+          "pathName": "pages/recommend/makeRecd",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/activity/SignCheck",
+          "pathName": "pages/activity/SignCheck",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/gift/giftCenter",
+          "pathName": "pages/gift/giftCenter",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/my/components/history",
+          "pathName": "pages/my/components/history",
+          "query": "creditNum=8",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/my/components/history",
+          "pathName": "pages/my/components/history",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/gift/gift",
+          "pathName": "pages/gift/gift",
+          "query": "id=5",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/column/column",
+          "pathName": "pages/column/column",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/recommend/recommendDetail",
+          "pathName": "pages/recommend/recommendDetail",
+          "query": "id=87",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/recommend/recommend",
+          "pathName": "pages/recommend/recommend",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/column/components/article",
+          "pathName": "pages/column/components/article",
+          "query": "kind=1&id=23",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/column/components/article",
+          "pathName": "pages/column/components/article",
+          "query": "id=2268",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/activity/ActivityDetails",
+          "pathName": "pages/column/components/article",
+          "query": "id=2268",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "",
           "pathName": "pages/activity/ActivityDetails",
           "query": "id=2268",
@@ -12,5 +124,8 @@
         }
       ]
     }
+  },
+  "setting": {
+    "compileHotReLoad": true
   }
 }

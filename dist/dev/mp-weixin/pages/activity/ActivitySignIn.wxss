@@ -11,3 +11,7 @@ button.data-v-82454ebc {
   width: 80%;
   margin: 1vh 10%;
 }
+#scan.data-v-82454ebc{
+  background-color: #0077b6;
+  color: #fff;
+}

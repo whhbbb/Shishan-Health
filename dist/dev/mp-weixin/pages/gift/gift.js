@@ -129,9 +129,25 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
     const immeBuy = () => {
       console.log("购买");
+      if (goodsnum.value > goodsdata.value.allnums) {
+        common_vendor.index.showToast({
+          title: "兑换数量超出库存",
+          icon: "error",
+          duration: 2e3
+        });
+        return;
+      }
       if (mycredit.value < goodsnum.value * goodsdata.value.price) {
         common_vendor.index.showToast({
           title: "剩余积分不足",
+          icon: "error",
+          duration: 2e3
+        });
+        return;
+      }
+      if (goodsnum.value == 0) {
+        common_vendor.index.showToast({
+          title: "请选择兑换数量",
           icon: "error",
           duration: 2e3
         });
@@ -190,6 +206,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-018686c0"], ["__file", "D:/feidian/计算机设计大赛/xswc_cs/src/pages/gift/gift.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-018686c0"], ["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/gift/gift.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=gift.js.map

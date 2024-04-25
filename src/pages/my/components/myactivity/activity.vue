@@ -141,7 +141,7 @@ export default {
 }
 
 .nav-item.active {
-  color: #428ffb;
+  color: #0077b6;
 }
 .content {
   overflow-y: scroll;

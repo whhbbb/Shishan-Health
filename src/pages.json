@@ -69,6 +69,12 @@
       }
     },
     {
+      "path": "pages/gift/components/orderList",
+      "style": {
+        "navigationBarTitleText": "兑换记录"
+      }
+    },
+    {
       "path": "pages/my/components/editPassword",
       "style": {
         "navigationBarTitleText": "修改密码"
@@ -77,7 +83,7 @@
     {
       "path": "pages/recommend/recommend",
       "style": {
-        "navigationBarTitleText": "我要推荐"
+        "navigationBarTitleText": "活动推荐"
       }
     },
     {
@@ -179,6 +185,12 @@
         "pagePath": "pages/index/index",
         "iconPath": "static/bottomBar/star.png",
         "selectedIconPath": "static/bottomBar/active_star.png"
+      },
+      {
+        "text": "推荐",
+        "pagePath": "pages/recommend/recommend",
+        "iconPath": "static/bottomBar/recommend.png",
+        "selectedIconPath": "static/bottomBar/active_recommend.png"
       },
       {
         "text": "专栏",

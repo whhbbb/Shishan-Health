@@ -38,7 +38,7 @@ page.data-v-018686c0 {
 /* 直接设置swiper属性 */
 .swiper-wrapper.data-v-018686c0 {
   margin-top: 20rpx;
-  height: 800rpx;
+  height: 900rpx;
   width: 100%;
 }
 .swiper-wrapper .swiper.data-v-018686c0 {
@@ -125,6 +125,23 @@ swiper-item image.data-v-018686c0 {
   background-color: gainsboro;
   text-align: center;
 }
+.introduce.data-v-018686c0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx 0;
+}
+.introduce .intro-line.data-v-018686c0 {
+  width: 100rpx;
+  height: 1rpx;
+  background-color: gainsboro;
+  text-align: center;
+}
+.introduce .content.data-v-018686c0 {
+  font-size: 30rpx;
+  margin: 0 20rpx;
+  color: rgb(147, 147, 147);
+}
 .detail-nav.data-v-018686c0 {
   display: flex;
   justify-content: space-between;
@@ -199,6 +216,7 @@ text.data-v-018686c0 {
   margin: 10rpx;
 }
 .text-remark.data-v-018686c0 {
+  text-indent: 50rpx;
   display: block;
   font-size: 27rpx;
 }

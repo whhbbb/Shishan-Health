@@ -7,28 +7,19 @@
     <view class="ql-editor" id="content" ref="contentRef" v-html="item.content"></view>
     <view class="foot">
       <view class="foot-main">
-        <image class="foot-img" src="../../../static/log.png" mode="scaleToFill" />
+        <image class="foot-img" src="../../../static/log.png" mode="heightFix" />
         <view class="foot-text">学术晚茶</view>
       </view>
       <view class="foot-icons">
         <view class="icon-view">
-          <uni-icons type="eye-filled" size="20"></uni-icons>
+          <image class="post-like-image" src="../../../static/column/eyes.png"></image>
           <text class="post-like-font">{{ item.viewsNums }}</text>
         </view>
         <view class="icon-view">
-          <uni-icons
-            v-if="!item.tblLike"
-            @tap.stop="likeUp(item.id, item.tblLike)"
-            type="heart"
-            size="20"
-          ></uni-icons>
-          <uni-icons
-            v-else
-            type="heart-filled"
-            size="20"
-            @tap.stop="likeUp(item.id, item.tblLike)"
-            color="red"
-          ></uni-icons>
+          <image v-if="!item.tblLike" class="post-like-image" @tap.stop="likeUp(item.id, item.tblLike)"
+            src="../../../static/column/heart.png"></image>
+          <image v-else class="post-like-image" @tap.stop="likeUp(item.id, item.tblLike)"
+            src="../../../static/column/heart-active.png"></image>
           <text class="post-like-font">{{ item.likeCount }}</text>
         </view>
       </view>
@@ -48,23 +39,24 @@ type details = {
   title: string
   createTime: string
   content: string
+  viewsNums: number
+  likeCount: number
+  tblLike: object
+  id: number
+
 }
 const props = defineProps<{
   id: number
   kind: number
 }>()
-const item = ref<details>({
-  title: '',
-  createTime: '',
-  content: '',
-})
+const item = ref<details>()
 const getColumnsDetail = async (id: number, type: number = 2) => {
   const res = await getColumnsDetailAPI(id, type)
   console.log(res.data)
   item.value = res.data
   item.value.content = item.value.content.replace(
     /\<img/g,
-    '<img style="max-width:100%;height:auto" ',
+    '<img style="max-width:100%;height:auto;" ',
   )
 }
 onLoad(() => {
@@ -105,14 +97,15 @@ const likeUp = (id: number, tblLike: object) => {
 </script>
 <style scoped lang="scss">
 .details {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   .header {
-    width: 90%;
-    margin: 0 auto;
+    width: 91%;
+
     .title {
       font-size: 45rpx;
       font-weight: bold;
@@ -123,10 +116,9 @@ const likeUp = (id: number, tblLike: object) => {
     .time {
       font-size: 30rpx;
       color: #999;
-      margin-bottom: 20rpx;
-      padding-left: 15rpx;
     }
   }
+
   .foot {
     border-top: 1px solid whitesmoke;
     width: 90%;
@@ -135,39 +127,56 @@ const likeUp = (id: number, tblLike: object) => {
     padding-top: 3vh;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
     .foot-main {
       display: flex;
-      flex-direction: row;
+      align-items: center;
+
       .foot-img {
-        height: 80rpx;
-        width: 80rpx;
+        height: 70rpx;
         margin-right: 15rpx;
         border-radius: 15%;
       }
+
       .foot-text {
         line-height: 80rpx;
         font-size: 30rpx;
         color: #999;
       }
     }
+
     .foot-icons {
       display: flex;
-      width: 35vw;
+      width: 30vw;
       justify-content: space-between;
       flex-direction: row;
+      align-items: center;
+
       .icon-view {
         height: 80rpx;
         line-height: 80rpx;
+
         .post-like-font {
-          vertical-align: middle;
-          font-size: 30rpx;
-          margin-left: 10rpx;
+          // vertical-align: middle;
+          font-size: 28rpx;
         }
+      }
+
+      .post-like-image {
+        font-size: 15rpx;
+        width: 30rpx;
+        height: 30rpx;
+        margin-right: 10rpx;
       }
     }
   }
+
   .content {
     width: 100%;
   }
+}
+.ql-editor{
+  line-height: 1.5;
 }
 </style>

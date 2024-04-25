@@ -1,31 +1,28 @@
 <template>
-  <div class="tip-page">
-    <div class="content">
-      <uni-icons
-        class="icons"
-        v-if="result === 1 || result === 2"
-        type="info"
-        color="#ffa500"
-        size="100"
-      ></uni-icons>
-      <uni-icons
-        class="icons"
-        v-else-if="result === 3"
-        type="checkbox-filled"
-        color="green"
-        size="100"
-      ></uni-icons>
-      <uni-icons class="icons" v-else type="clear" color="red" size="100"></uni-icons>
-
-      <div class="message">{{ message[result - 1] }}</div>
-
-      <view class="tag-view">
-        <uni-tag type="warning" v-if="result === 1" @click="toapply" text="未报名 点击报名" />
-        <uni-tag type="error" v-else-if="result === 4" text="活动已结束" />
-        <uni-tag type="error" v-else-if="result === 5" text="报名未开始" />
+  <view class="sign-in-wrapper">
+    <view class="sign-in">
+      <view class="content">
+        <image
+          class="sign-in-img"
+          v-if="result === 3"
+          src="../../static/activity/success.png"
+          mode="scaleToFill"
+        />
+        <image
+          v-else
+          class="sign-in-img"
+          src="../../static/activity/warn.png"
+          mode="scaleToFill"
+        />
+        <view class="content-detail">
+          {{ message[result - 1].detail }}
+        </view>
       </view>
-    </div>
-  </div>
+      <view class="nav">
+        <button @tap="navTo" class="nav-btn">{{ message[result-1].btn }}</button>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script lang="ts" setup>
@@ -38,7 +35,28 @@ const props = defineProps<{
   id: number
 }>()
 console.log(props.id)
-const message = ref<string[]>(['签到失败', '请勿重复签到', '签到成功', '签到截止', '签到失败'])
+const message = [
+  {
+    detail:'未报名',
+    btn:'点击报名'
+  },
+  {
+    detail:'请勿重复签到',
+    btn:'我知道了'
+  },
+  {
+    detail:'签到成功',
+    btn:'我知道了'
+  },
+  {
+    detail:'签到截止',
+    btn:'我知道了'
+  },
+  {
+    detail:'签到未开始',
+    btn:'我知道了'
+  }
+]
 
 const postFeedbackAPI = (data: any) => {
   return http<any>({
@@ -53,19 +71,19 @@ const postFeedbackAPI = (data: any) => {
 const postFeedback = async (AId: number) => {
   const res = await postFeedbackAPI(AId)
   console.log(res)
-  result.value = res.data
+  result.value = 1
 }
 
 let AId = props.id
 
-const toapply = () => {
-  console.log('去报名！')
-  uni.redirectTo({
-    url: '/pages/index/index',
-  })
-  uni.navigateTo({
-    url: '/pages/activity/ActivityDetails?id=' + AId,
-  })
+const navTo = () => {
+  if(result.value === 1){
+    uni.navigateTo({
+      url: '/pages/activity/SignApply?id=' + AId,
+    })
+  }else{
+    uni.navigateBack()
+  }
 }
 onLoad((options) => {
   let obj = wx.getLaunchOptionsSync()
@@ -109,29 +127,43 @@ onLoad((options) => {
 })
 </script>
 
-<style>
-.tip-page {
+<style lang="scss">
+.sign-in-wrapper {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-}
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.icons {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-}
-
-.message {
-  margin-top: 1vh;
-  font-size: 26px;
-  font-weight: bold;
-  color: #333;
+  .sign-in {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .sign-in-img {
+      width: 130rpx;
+      height: 130rpx;
+    }
+    .content-detail{
+      margin-top: 20rpx;
+      font-size: 38rpx;
+      font-weight: bold;
+      text-align: center;
+    }
+    }
+    .nav-btn{
+      width: 300rpx;
+      border-radius: 50rpx;
+      color: #0077B6;
+      font-weight: bold;
+      background-color: rgb(214, 243, 251);
+    }
+  }
 }
 </style>

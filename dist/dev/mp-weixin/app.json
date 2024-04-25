@@ -10,6 +10,7 @@
     "pages/activity/ActivitySignIn",
     "pages/gift/giftCenter",
     "pages/gift/gift",
+    "pages/gift/components/orderList",
     "pages/my/components/editPassword",
     "pages/recommend/recommend",
     "pages/recommend/recommendDetail",
@@ -45,6 +46,12 @@
         "selectedIconPath": "static/bottomBar/active_star.png"
       },
       {
+        "text": "推荐",
+        "pagePath": "pages/recommend/recommend",
+        "iconPath": "static/bottomBar/recommend.png",
+        "selectedIconPath": "static/bottomBar/active_recommend.png"
+      },
+      {
         "text": "专栏",
         "pagePath": "pages/column/column",
         "iconPath": "static/bottomBar/column.png",
@@ -64,5 +71,6 @@
       }
     ]
   },
+  "styleIsolation": "shared",
   "usingComponents": {}
 }
