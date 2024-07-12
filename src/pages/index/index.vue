@@ -12,7 +12,6 @@ const onScrolltolower = () => {
 <template>
   <CustomNavbar />
   <scroll-view @scrolltolower="onScrolltolower" class="scroll-view" scroll-y>
-    <XsSwiper class="swiper"></XsSwiper>
     <HomeContent />
   </scroll-view>
 </template>
@@ -20,18 +19,13 @@ const onScrolltolower = () => {
 <style lang="scss">
 //
 page {
-  background-color: #fff;
+  background-color: rgb(188, 212, 141);
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .scroll-view {
-  display: flex;
-  flex: 1;
-
-  .swiper {
-    padding-top: 20px;
-  }
+  padding-bottom: 40rpx;
 }
 </style>

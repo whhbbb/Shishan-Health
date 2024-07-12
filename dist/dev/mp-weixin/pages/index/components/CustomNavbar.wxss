@@ -23,11 +23,33 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.navbar {
+.navbar-wrapper {
+  position: relative;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.navbar-wrapper .navbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 30rpx;
-  box-shadow: 0 0 20px #e5e4e4;
-  color: #000;
-  font-size: 40rpx;
-  background-color: #fff;
+  color: #fff;
+  background-color: transparent;
+  font-size: 35rpx;
   text-align: center;
+}
+.navbar-wrapper .navbar .check-icon {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+.navbar-wrapper .img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.navbar-wrapper .img image {
+  border-radius: 0 0 20rpx 20rpx;
 }

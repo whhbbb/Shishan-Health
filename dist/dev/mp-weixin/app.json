@@ -1,31 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login",
     "pages/my/my",
-    "pages/column/column",
-    "pages/column/components/article",
-    "pages/activity/ActivityLaunch",
-    "pages/activity/ActivityEdit",
-    "pages/activity/ActivitySignIn",
-    "pages/gift/giftCenter",
-    "pages/gift/gift",
-    "pages/gift/components/orderList",
-    "pages/my/components/editPassword",
-    "pages/recommend/recommend",
-    "pages/recommend/recommendDetail",
-    "pages/activity/ActivityDetails",
-    "pages/my/components/myactivity/activity",
-    "pages/my/components/integral",
-    "pages/recommend/makeRecd",
-    "pages/my/components/wx",
-    "pages/my/components/contactUs",
-    "pages/my/components/history",
-    "pages/my/components/aboutUs",
-    "pages/my/components/feedBack",
-    "pages/my/components/editUser",
-    "pages/my/components/userImage",
-    "pages/activity/SignCheck"
+    "pages/ranking/ranking",
+    "pages/clock-in/clockIn"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -34,40 +12,22 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#A6AAB2",
-    "selectedColor": "#0077B6",
-    "backgroundColor": "F5F6F7",
+    "color": "#2c2c2c",
+    "selectedColor": "#c0d294",
+    "backgroundColor": "#fff",
     "borderStyle": "white",
     "list": [
       {
         "text": "首页",
         "pagePath": "pages/index/index",
-        "iconPath": "static/bottomBar/star.png",
-        "selectedIconPath": "static/bottomBar/active_star.png"
-      },
-      {
-        "text": "推荐",
-        "pagePath": "pages/recommend/recommend",
-        "iconPath": "static/bottomBar/recommend.png",
-        "selectedIconPath": "static/bottomBar/active_recommend.png"
-      },
-      {
-        "text": "专栏",
-        "pagePath": "pages/column/column",
-        "iconPath": "static/bottomBar/column.png",
-        "selectedIconPath": "static/bottomBar/active_column.png"
-      },
-      {
-        "text": "礼品",
-        "pagePath": "pages/gift/giftCenter",
-        "iconPath": "static/bottomBar/gift.png",
-        "selectedIconPath": "static/bottomBar/active_gift.png"
+        "iconPath": "static/image/bottomBar/index.png",
+        "selectedIconPath": "static/image/bottomBar/index-active.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/my/my",
-        "iconPath": "static/bottomBar/my.png",
-        "selectedIconPath": "static/bottomBar/active_my.png"
+        "iconPath": "static/image/bottomBar/my.png",
+        "selectedIconPath": "static/image/bottomBar/my-active.png"
       }
     ]
   },

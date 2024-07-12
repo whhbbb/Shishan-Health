@@ -1,0 +1,1 @@
+{"version":3,"file":"clockIn.js","sources":["../../../../../uniPage:/cGFnZXMvY2xvY2staW4vY2xvY2tJbi52dWU"],"sourcesContent":["import MiniProgramPage from '/Users/whhbbb/Documents/Project-storage/health_check-in/src/pages/clock-in/clockIn.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;AACA,GAAG,WAAW,eAAe;"}

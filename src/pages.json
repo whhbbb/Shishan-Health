@@ -15,156 +15,21 @@
       }
     },
     {
-      "path": "pages/login/login",
-      "style": {
-        "navigationBarTitleText": "登录"
-      }
-    },
-    {
       "path": "pages/my/my",
       "style": {
-        "navigationBarTitleText": "个人中心"
+        "navigationBarTitleText": "我的"
       }
     },
     {
-      "path": "pages/column/column",
+      "path": "pages/ranking/ranking",
       "style": {
-        "navigationBarTitleText": "精彩专栏"
+        "navigationBarTitleText": "排行榜"
       }
     },
     {
-      "path": "pages/column/components/article",
+      "path": "pages/clock-in/clockIn",
       "style": {
-        "navigationBarTitleText": "文章详情"
-      }
-    },
-    {
-      "path": "pages/activity/ActivityLaunch",
-      "style": {
-        "navigationBarTitleText": "发起活动"
-      }
-    },
-    {
-      "path": "pages/activity/ActivityEdit",
-      "style": {
-        "navigationBarTitleText": "修改活动"
-      }
-    },
-    {
-      "path": "pages/activity/ActivitySignIn",
-      "style": {
-        "navigationBarTitleText": "活动签到"
-      }
-    },
-    {
-      "path": "pages/gift/giftCenter",
-      "style": {
-        "navigationBarTitleText": "礼品中心"
-      }
-    },
-    {
-      "path": "pages/gift/gift",
-      "style": {
-        "navigationBarTitleText": "礼品详情"
-      }
-    },
-    {
-      "path": "pages/gift/components/orderList",
-      "style": {
-        "navigationBarTitleText": "兑换记录"
-      }
-    },
-    {
-      "path": "pages/my/components/editPassword",
-      "style": {
-        "navigationBarTitleText": "修改密码"
-      }
-    },
-    {
-      "path": "pages/recommend/recommend",
-      "style": {
-        "navigationBarTitleText": "活动推荐"
-      }
-    },
-    {
-      "path": "pages/recommend/recommendDetail",
-      "style": {
-        "navigationBarTitleText": "推荐详情"
-      }
-    },
-    {
-      "path": "pages/activity/ActivityDetails",
-      "style": {
-        "navigationBarTitleText": "活动详情"
-      }
-    },
-    {
-      "path": "pages/my/components/myactivity/activity",
-      "style": {
-        "navigationBarTitleText": "我的活动"
-      }
-    },
-    {
-      "path": "pages/my/components/integral",
-      "style": {
-        "navigationBarTitleText": "我的积分"
-      }
-    },
-    {
-      "path": "pages/recommend/makeRecd",
-      "style": {
-        "navigationBarTitleText": "发起推荐"
-      }
-    },
-    {
-      "path": "pages/my/components/wx",
-      "style": {
-        "navigationBarTitleText": "微信绑定"
-      }
-    },
-    {
-      "path": "pages/my/components/contactUs",
-      "style": {
-        "navigationBarTitleText": "联系我们"
-      }
-    },
-    {
-      "path": "pages/my/components/history",
-      "style": {
-        "navigationBarTitleText": "积分记录"
-      }
-    },
-    {
-      "path": "pages/my/components/aboutUs",
-      "style": {
-        "navigationBarTitleText": "关于我们"
-      }
-    },
-    {
-      "path": "pages/my/components/feedBack",
-      "style": {
-        "navigationBarTitleText": "意见反馈"
-      }
-    },
-    {
-      "path": "pages/my/components/editUser",
-      "style": {
-        "navigationBarTitleText": "个人资料"
-      }
-    },
-    {
-      "path": "pages/my/components/userImage",
-      "style": {
-        "navigationBarTitleText": "头像",
-        "navigationBarTextStyle": "white",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationStyle": "default"
-      }
-    },
-    {
-      "path": "pages/activity/SignCheck",
-      "style": {
-        "navigationBarTitleText": "签到结果"
+        "navigationBarTitleText": "打卡"
       }
     }
   ],
@@ -175,40 +40,22 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#A6AAB2",
-    "selectedColor": "#0077B6",
-    "backgroundColor": "F5F6F7",
+    "color": "#2c2c2c",
+    "selectedColor": "#c0d294",
+    "backgroundColor": "#fff",
     "borderStyle": "white",
     "list": [
       {
         "text": "首页",
         "pagePath": "pages/index/index",
-        "iconPath": "static/bottomBar/star.png",
-        "selectedIconPath": "static/bottomBar/active_star.png"
-      },
-      {
-        "text": "推荐",
-        "pagePath": "pages/recommend/recommend",
-        "iconPath": "static/bottomBar/recommend.png",
-        "selectedIconPath": "static/bottomBar/active_recommend.png"
-      },
-      {
-        "text": "专栏",
-        "pagePath": "pages/column/column",
-        "iconPath": "static/bottomBar/column.png",
-        "selectedIconPath": "static/bottomBar/active_column.png"
-      },
-      {
-        "text": "礼品",
-        "pagePath": "pages/gift/giftCenter",
-        "iconPath": "static/bottomBar/gift.png",
-        "selectedIconPath": "static/bottomBar/active_gift.png"
+        "iconPath": "static/image/bottomBar/index.png",
+        "selectedIconPath": "static/image/bottomBar/index-active.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/my/my",
-        "iconPath": "static/bottomBar/my.png",
-        "selectedIconPath": "static/bottomBar/active_my.png"
+        "iconPath": "static/image/bottomBar/my.png",
+        "selectedIconPath": "static/image/bottomBar/my-active.png"
       }
     ]
   },

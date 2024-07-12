@@ -1,12 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-if (!Array) {
-  const _easycom_XsSwiper2 = common_vendor.resolveComponent("XsSwiper");
-  _easycom_XsSwiper2();
-}
-const _easycom_XsSwiper = () => "../../components/XsSwiper.js";
 if (!Math) {
-  (CustomNavbar + _easycom_XsSwiper + HomeContent)();
+  (CustomNavbar + HomeContent)();
 }
 const CustomNavbar = () => "./components/CustomNavbar.js";
 const HomeContent = () => "./components/HomeContent.js";
@@ -24,6 +19,6 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/xswc_game/src/pages/index/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/health_check-in/src/pages/index/index.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=index.js.map

@@ -24,15 +24,11 @@
 /* 透明度 */
 /* 文章场景相关 */
 page {
-  background-color: #fff;
+  background-color: rgb(188, 212, 141);
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 .scroll-view {
-  display: flex;
-  flex: 1;
-}
-.scroll-view .swiper {
-  padding-top: 20px;
+  padding-bottom: 40rpx;
 }
