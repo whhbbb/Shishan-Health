@@ -32,24 +32,20 @@
   position: relative;
   z-index: 1;
   display: flex;
-  justify-content: center;
+  padding-left: 30rpx;
   align-items: center;
   padding-bottom: 30rpx;
   color: #fff;
   background-color: transparent;
-  font-size: 35rpx;
-  text-align: center;
+  font-size: 38rpx;
 }
 .navbar-wrapper .navbar .check-icon {
-  width: 35rpx;
-  height: 35rpx;
+  width: 50rpx;
+  height: 50rpx;
   margin-right: 10rpx;
 }
 .navbar-wrapper .img {
   position: absolute;
   width: 100%;
   top: 0;
-}
-.navbar-wrapper .img image {
-  border-radius: 0 0 20rpx 20rpx;
 }

@@ -1,0 +1,21 @@
+<template>
+    <TabBar :selected="1" />
+    </template>
+    
+    <script setup>
+    import { onShow } from "@dcloudio/uni-app";
+    import { getCurrentInstance } from 'vue'
+    
+    onShow(()=>{
+        const curPages = getCurrentPages()[0];  // 获取当前页面实例
+        if (typeof curPages.getTabBar === 'function' && curPages.getTabBar()) {  
+          curPages.getTabBar().setData({  
+            selected: 1   // 表示当前菜单的索引，该值在不同的页面表示不同
+          });  
+        }
+    })
+    </script>
+    
+    <style lang="scss">
+    
+    </style>

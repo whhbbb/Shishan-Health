@@ -8,6 +8,8 @@ if (!Math) {
   "./pages/my/my.js";
   "./pages/ranking/ranking.js";
   "./pages/clock-in/clockIn.js";
+  "./pages/share/share.js";
+  "./pages/science/science.js";
 }
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "App",
@@ -26,8 +28,10 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   }
 });
 const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/health_check-in/src/App.vue"]]);
+const TabBar = () => "./components/CustomTabBar.js";
 function createApp() {
   const app = common_vendor.createSSRApp(App);
+  app.component("TabBar", TabBar);
   app.use(stores_index.pinia);
   return {
     app

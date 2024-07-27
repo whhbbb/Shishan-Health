@@ -31,6 +31,18 @@
       "style": {
         "navigationBarTitleText": "打卡"
       }
+    },
+    {
+      "path": "pages/share/share",
+      "style": {
+        "navigationBarTitleText": "分享"
+      }
+    },
+    {
+      "path": "pages/science/science",
+      "style": {
+        "navigationBarTitleText": "科普"
+      }
     }
   ],
   "globalStyle": {
@@ -40,8 +52,9 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
+    "custom": true,
     "color": "#2c2c2c",
-    "selectedColor": "#c0d294",
+    "selectedColor": "#55B89A",
     "backgroundColor": "#fff",
     "borderStyle": "white",
     "list": [
@@ -50,6 +63,17 @@
         "pagePath": "pages/index/index",
         "iconPath": "static/image/bottomBar/index.png",
         "selectedIconPath": "static/image/bottomBar/index-active.png"
+      },
+      {
+        "text": "科普",
+        "pagePath": "pages/science/science"
+      },
+      {
+        "pagePath": "pages/ranking/ranking"
+      },
+      {
+        "text": "分享",
+        "pagePath": "pages/share/share"
       },
       {
         "text": "我的",

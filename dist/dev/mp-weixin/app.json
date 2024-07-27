@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/my/my",
     "pages/ranking/ranking",
-    "pages/clock-in/clockIn"
+    "pages/clock-in/clockIn",
+    "pages/share/share",
+    "pages/science/science"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -12,8 +14,9 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
+    "custom": true,
     "color": "#2c2c2c",
-    "selectedColor": "#c0d294",
+    "selectedColor": "#55B89A",
     "backgroundColor": "#fff",
     "borderStyle": "white",
     "list": [
@@ -24,6 +27,17 @@
         "selectedIconPath": "static/image/bottomBar/index-active.png"
       },
       {
+        "text": "科普",
+        "pagePath": "pages/science/science"
+      },
+      {
+        "pagePath": "pages/ranking/ranking"
+      },
+      {
+        "text": "分享",
+        "pagePath": "pages/share/share"
+      },
+      {
         "text": "我的",
         "pagePath": "pages/my/my",
         "iconPath": "static/image/bottomBar/my.png",
@@ -32,5 +46,7 @@
     ]
   },
   "styleIsolation": "shared",
-  "usingComponents": {}
+  "usingComponents": {
+    "tab-bar": "/components/CustomTabBar"
+  }
 }

@@ -1,1 +1,1 @@
-<custom-navbar u-i="4cd45192-0" bind:__l="__l"/><scroll-view bindscrolltolower="{{a}}" class="scroll-view" scroll-y><home-content u-i="4cd45192-1" bind:__l="__l"/></scroll-view>
+<view class="page" style="{{'filter:' + b}}"><custom-navbar u-i="4cd45192-0" bind:__l="__l"/><scroll-view bindscrolltolower="{{a}}" class="scroll-view" scroll-y><home-content u-i="4cd45192-1" bind:__l="__l"/></scroll-view></view><tab-bar wx:if="{{d}}" bindchooseWay="{{c}}" u-i="4cd45192-2" bind:__l="__l" u-p="{{d}}"/>

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-// 获取屏幕边界到安全区域距离
-const { safeAreaInsets } = uni.getSystemInfoSync()
-console.log(safeAreaInsets)
-</script>
-
 <template>
   <!-- 顶部占位 -->
   <view class="navbar-wrapper">
@@ -11,19 +5,25 @@ console.log(safeAreaInsets)
       <!-- ...省略 -->
       <image
         class="check-icon"
-        src="../../../static/image/check.png"
+        src="../../../static/image/logo.png"
         mode="scaleToFill"
       />
       狮山健康
     </view>
     <view class="img">
       <image
-        src="../../../static/image/tabbar.jpg"
+        src="../../../static/image/top-background.png"
         mode="widthFix"
       />
     </view>
   </view>
 </template>
+
+<script setup lang="ts">
+// 获取屏幕边界到安全区域距离
+const { safeAreaInsets } = uni.getSystemInfoSync()
+console.log(safeAreaInsets)
+</script>
 
 <style lang="scss">
 .navbar-wrapper {
@@ -34,16 +34,15 @@ console.log(safeAreaInsets)
     position: relative;
     z-index: 1;
     display: flex;
-    justify-content: center;
+    padding-left: 30rpx;
     align-items: center;
     padding-bottom: 30rpx;
     color: #fff;
     background-color: transparent;
-    font-size: 35rpx;
-    text-align: center;
+    font-size: 38rpx;
     .check-icon{
-      width: 35rpx;
-      height: 35rpx;
+      width: 50rpx;
+      height: 50rpx;
       margin-right: 10rpx;
     }
   }
@@ -51,9 +50,6 @@ console.log(safeAreaInsets)
     position: absolute;
     width: 100%;
     top: 0;
-    image{
-      border-radius: 0 0 20rpx 20rpx;
-    }
   }
 }
 </style>
