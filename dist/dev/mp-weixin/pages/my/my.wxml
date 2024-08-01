@@ -1,1 +1,1 @@
-<tab-bar wx:if="{{a}}" u-i="79e37828-0" bind:__l="__l" u-p="{{a}}"/>
+<custom-navbar wx:if="{{a}}" u-i="88ea1fd4-0" bind:__l="__l" u-p="{{a}}"/><mycontent u-i="88ea1fd4-1" bind:__l="__l"/><tab-bar wx:if="{{b}}" u-i="88ea1fd4-2" bind:__l="__l" u-p="{{b}}"/>

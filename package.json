@@ -1,8 +1,8 @@
 {
-  "name": "uni-app-xswc",
+  "name": "uni-app-ssjk",
   "version": "0.0.0",
   "author": {
-    "name": "xswc"
+    "name": "ssjk"
   },
   "scripts": {
     "dev:app": "uni -p app",
@@ -63,6 +63,7 @@
     "@dcloudio/uni-mp-xhs": "3.0.0-alpha-3081220230802001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3081220230802001",
     "@dcloudio/uni-ui": "^1.4.28",
+    "animate.css": "^4.1.1",
     "js-base64": "^3.7.5",
     "pinia": "2.0.27",
     "pinia-plugin-persistedstate": "^3.2.0",

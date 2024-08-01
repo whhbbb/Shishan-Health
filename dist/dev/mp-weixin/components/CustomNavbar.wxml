@@ -1,0 +1,1 @@
+<view class="navbar-wrapper" style="{{'padding-top:' + g}}"><view class="back-button" bindtap="{{b}}"><image wx:if="{{a}}" class="back-icon" src="/static/image/Left-back.png"/></view><view class="{{e}}"><image wx:if="{{c}}" class="check-icon" src="/static/image/logo.png" mode="scaleToFill"/> {{d}}</view><view class="img"><image src="{{f}}" mode="widthFix"/></view></view>

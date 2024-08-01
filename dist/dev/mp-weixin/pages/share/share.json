@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "分享",
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-navbar": "../../components/CustomNavbar",
+    "share-item": "./components/ShareItem"
+  }
 }

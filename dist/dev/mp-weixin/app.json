@@ -11,7 +11,8 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "custom": true,
@@ -22,9 +23,7 @@
     "list": [
       {
         "text": "首页",
-        "pagePath": "pages/index/index",
-        "iconPath": "static/image/bottomBar/index.png",
-        "selectedIconPath": "static/image/bottomBar/index-active.png"
+        "pagePath": "pages/index/index"
       },
       {
         "text": "科普",
@@ -39,9 +38,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/my/my",
-        "iconPath": "static/image/bottomBar/my.png",
-        "selectedIconPath": "static/image/bottomBar/my-active.png"
+        "pagePath": "pages/my/my"
       }
     ]
   },

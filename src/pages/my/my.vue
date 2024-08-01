@@ -1,8 +1,15 @@
 <template>
-<TabBar :selected="4" />
+  <CustomNavbar
+    showLogo
+    position="left"
+  />
+    <Mycontent />
+  <TabBar :selected="4" />
 </template>
 
 <script setup>
+import CustomNavbar from '../../components/CustomNavbar.vue'
+import Mycontent from './components/MyContent.vue'
 import { onShow } from "@dcloudio/uni-app";
 import { getCurrentInstance } from 'vue'
 
@@ -17,5 +24,4 @@ onShow(()=>{
 </script>
 
 <style lang="scss">
-
 </style>

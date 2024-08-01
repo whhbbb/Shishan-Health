@@ -1,1 +1,0 @@
-<view class="navbar-wrapper"><view class="navbar" style="{{'padding-top:' + a}}"><image class="check-icon" src="/static/image/logo.png" mode="scaleToFill"/> 狮山健康 </view><view class="img"><image src="/static/image/top-background.png" mode="widthFix"/></view></view>

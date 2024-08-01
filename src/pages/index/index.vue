@@ -1,6 +1,6 @@
 <template>
   <view class="page" :style="{ filter: isDarkened ? 'brightness(0.5)' : 'brightness(1)' }">
-    <CustomNavbar />
+    <CustomNavbar position="left" showLogo/>
     <scroll-view @scrolltolower="onScrolltolower" class="scroll-view"
        scroll-y>
       <HomeContent />
@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-//
-import CustomNavbar from './components/CustomNavbar.vue'
+
+import CustomNavbar from '../../components/CustomNavbar.vue'
 import HomeContent from './components/HomeContent.vue'
 import { onShow,onHide } from "@dcloudio/uni-app";
 import { getCurrentInstance, ref } from 'vue'
@@ -24,7 +24,6 @@ const onScrolltolower = () => {
 }
 
 const handleChooseWay = () => {
-  console.log('选择方式')
   isDarkened.value = !isDarkened.value;
 }
 
@@ -43,7 +42,7 @@ onHide(()=>{
 
 <style lang="scss">
 .page {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #f6f8fa;

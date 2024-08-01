@@ -107,7 +107,7 @@ onHide(() => {
 
 .cont {
     z-index: 0;
-    height: calc(100rpx + env(safe-area-inset-bottom) / 2);
+    height: calc(110rpx + env(safe-area-inset-bottom) / 2);
     padding-bottom: 70rpx;
     display: flex;
     justify-content: space-around;
@@ -158,7 +158,7 @@ onHide(() => {
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0);
-        top: -80rpx;
+        top: -70rpx;
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -19,9 +19,26 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.4.6",
-  "appid": "wx04faa083708676ae",
-  "projectname": "健康检查",
-  "condition": {},
+  "appid": "wxeac369314bc2d8c9",
+  "projectname": "狮山健康",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

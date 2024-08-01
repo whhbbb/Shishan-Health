@@ -7,7 +7,7 @@ if (!Array) {
 if (!Math) {
   (CustomNavbar + HomeContent)();
 }
-const CustomNavbar = () => "./components/CustomNavbar.js";
+const CustomNavbar = () => "../../components/CustomNavbar.js";
 const HomeContent = () => "./components/HomeContent.js";
 const _sfc_main = {
   __name: "index",
@@ -18,7 +18,6 @@ const _sfc_main = {
       common_vendor.index.$emit("scrolltolower");
     };
     const handleChooseWay = () => {
-      console.log("选择方式");
       isDarkened.value = !isDarkened.value;
     };
     common_vendor.onShow(() => {
@@ -35,16 +34,20 @@ const _sfc_main = {
     });
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.o(onScrolltolower),
-        b: isDarkened.value ? "brightness(0.5)" : "brightness(1)",
-        c: common_vendor.o(handleChooseWay),
-        d: common_vendor.p({
+        a: common_vendor.p({
+          position: "left",
+          showLogo: true
+        }),
+        b: common_vendor.o(onScrolltolower),
+        c: isDarkened.value ? "brightness(0.5)" : "brightness(1)",
+        d: common_vendor.o(handleChooseWay),
+        e: common_vendor.p({
           selected: 0
         })
       };
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/whhbbb/Documents/Project-storage/health_check-in/src/pages/index/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "C:/Users/玛卡巴卡/Desktop/Web/shishan-health/src/pages/index/index.vue"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=index.js.map

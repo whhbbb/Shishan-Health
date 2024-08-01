@@ -2,7 +2,7 @@
   "navigationStyle": "custom",
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "custom-navbar": "./components/CustomNavbar",
+    "custom-navbar": "../../components/CustomNavbar",
     "home-content": "./components/HomeContent"
   }
 }
